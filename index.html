@@ -110,7 +110,7 @@ footer a:hover{text-decoration:underline;}
 
 <!-- Navbar -->
 <header id="navbar" style="display:none;">
-  <div class="nav-left" onclick="scrollToLanding()">
+  <div class="nav-left" onclick="showLanding()">
     <img src="Spanish-City-Logo.png" alt="Logo" style="width:50px;height:auto;">
     <div>
       <h1>Spanish City RP</h1>
@@ -118,7 +118,8 @@ footer a:hover{text-decoration:underline;}
     </div>
   </div>
   <nav class="nav-right">
-    <div class="nav-item active" onclick="showTab('staff')">👥 Staff</div>
+    <div class="nav-item active" onclick="showTab('inicio')">🏠 Inicio</div>
+    <div class="nav-item" onclick="showTab('staff')">👥 Staff</div>
     <div class="nav-item" onclick="showTab('eventos')">🏁 Eventos</div>
     <div class="nav-item" onclick="showTab('normas')">📜 Normas</div>
     <div class="nav-item" onclick="showTab('corporaciones')">🏢 Corporaciones</div>
@@ -129,8 +130,15 @@ footer a:hover{text-decoration:underline;}
 </header>
 
 <main id="mainContent">
+  <!-- Inicio -->
+  <section id="inicio" class="tab-content card active">
+    <h2 class="section">Bienvenido a Spanish City RP</h2>
+    <p>Servidor ERLC inspirado en Valencia 🌆</p>
+    <p>Pulsa las pestañas para explorar Staff, Eventos, Normas y Corporaciones.</p>
+  </section>
+
   <!-- Staff completo -->
-  <section id="staff" class="tab-content active card">
+  <section id="staff" class="tab-content card">
     <h2 class="section">Staff Completo</h2>
     <div class="role">〘⚜️〙Creador (CRD)</div>
     <ul class="staff-list"><li><div class="tag">⚜️</div><div class="member">@〘⚜〙Marc</div></li></ul>
@@ -206,6 +214,7 @@ footer a:hover{text-decoration:underline;}
       <div class="corp-card corp-CONSERVACION"><h3>CONSERVACIÓN</h3><p>Conservación y Medio Ambiente — Protección de fauna y naturaleza.</p></div>
     </div>
   </section>
+
 </main>
 
 <footer>
@@ -219,18 +228,21 @@ function enterSite(){
   document.getElementById('landing').classList.add('hidden');
   document.getElementById('navbar').style.display='flex';
   document.getElementById('mainContent').classList.add('visible');
+  showTab('inicio'); // al entrar, mostrar "inicio"
 }
 
-// Scroll al landing
-function scrollToLanding(){
-  window.scrollTo({top:0,behavior:'smooth'});
+// Mostrar landing cuando pulsan en logo/nombre
+function showLanding(){
+  showTab('inicio');
 }
 
 // Cambiar pestañas
 function showTab(tabId){
   document.querySelectorAll('.nav-item').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-  document.querySelector('.nav-item[onclick*="'+tabId+'"]').classList.add('active');
+  if(tabId!=='inicio'){
+    document.querySelector('.nav-item[onclick*="'+tabId+'"]').classList.add('active');
+  }
   document.getElementById(tabId).classList.add('active');
 }
 
