@@ -117,14 +117,69 @@
   <footer>© 2025 Spanish City RP — Valencia | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a></footer>
 
   <script>
-    /* Funciones pestañas y entrar */
-    function enterSite(){document.getElementById('landing').classList.add('hidden');document.getElementById('mainContent').classList.add('visible');}
-    function showTab(tabId){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');document.getElementById(tabId).classList.add('active');}
+    // Entrar al sitio
+    function enterSite(){
+      document.getElementById('landing').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('visible');
+    }
 
-    /* Partículas animadas */
+    // Pestañas
+    function showTab(tabId){
+      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+      document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    // Partículas animadas
     const canvas = document.getElementById('bgCanvas');
     const ctx = canvas.getContext('2d');
     let w = canvas.width = window.innerWidth;
     let h = canvas.height = window.innerHeight;
 
-    window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; initParticles
+    window.addEventListener('resize', ()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; initParticles();});
+
+    let particles = [];
+    const particleCount = 120;
+
+    function initParticles(){
+      particles = [];
+      for(let i=0;i<particleCount;i++){
+        particles.push({
+          x: Math.random()*w,
+          y: Math.random()*h,
+          r: Math.random()*3+1,
+          dx: (Math.random()-0.5)*0.5,
+          dy: (Math.random()-0.5)*0.5
+        });
+      }
+    }
+
+    function animateParticles(){
+      ctx.clearRect(0,0,w,h);
+
+      // Fondo silueta de Valencia (opcional: reemplaza por tu imagen local si quieres)
+      const img = new Image();
+      img.src = 'Spanish-City-Logo.png'; // Puedes reemplazar por otra imagen de fondo
+      ctx.globalAlpha = 0.05;
+      ctx.drawImage(img,0,0,w,h);
+      ctx.globalAlpha = 1;
+
+      particles.forEach(p=>{
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.6)';
+        ctx.fill();
+        p.x += p.dx;
+        p.y += p.dy;
+        if(p.x<0||p.x>w)p.dx*=-1;
+        if(p.y<0||p.y>h)p.dy*=-1;
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    initParticles();
+    animateParticles();
+  </script>
+</body>
+</html>
