@@ -4,77 +4,63 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Spanish City RP — Valencia</title>
-  <meta name="description" content="Servidor de roleplay inspirado en Valencia | ERLC">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg-dark: #061020;
       --accent: #ff8200;
       --discord: #5865f2;
       font-family: "Inter", system-ui, sans-serif;
     }
     *{box-sizing:border-box;}
-    body, html {margin:0;padding:0;height:100%;overflow-x:hidden;background: var(--bg-dark); color:white;}
-    body {display:flex; flex-direction:column; align-items:center;}
+    html,body{margin:0;padding:0;height:100%;overflow-x:hidden;background:#061020;color:white;}
+    body{display:flex; flex-direction:column; align-items:center;}
+    
+    /* Canvas de partículas */
+    #bgCanvas {position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
     /* Pantalla de inicio */
     #landing {
       position: fixed; top:0; left:0; width:100%; height:100%;
-      background: url('https://i.ibb.co/2FqQWq5/valencia-silueta.jpg') center/cover no-repeat;
       display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
       transition: all 1s ease; z-index:10;
     }
     #landing.hidden {opacity:0; pointer-events:none;}
-    #landing img { width:150px; height:auto; margin-bottom:20px; }
-    #landing h1 { font-size: 3rem; margin:0; color: var(--accent); text-shadow:0 0 20px #000;}
-    #landing button {
-      margin-top: 30px; padding: 14px 28px; font-size:1.2rem; font-weight:700;
-      border:none; border-radius:12px; background: var(--accent); color:#071018;
-      cursor:pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    #landing button:hover { transform: scale(1.05); }
+    #landing img{width:150px;height:auto;margin-bottom:20px;}
+    #landing h1{font-size:3rem;color:var(--accent);text-shadow:0 0 20px #000;margin:0;}
+    #landing button{margin-top:30px;padding:14px 28px;font-size:1.2rem;font-weight:700;border:none;border-radius:12px;background:var(--accent);color:#071018;cursor:pointer;transition:0.3s;box-shadow:0 8px 20px rgba(0,0,0,0.3);}
+    #landing button:hover{transform:scale(1.05);}
 
     /* Botón Discord */
-    #fixedDiscord {
-      position: fixed; top: 12px; right:12px;
-      background: var(--discord); color:white; padding:.6rem .9rem;
-      border-radius:10px; font-weight:700; z-index:9999;
-      display:inline-flex; gap:.6rem; align-items:center;
-      box-shadow:0 8px 26px rgba(88,101,242,0.18);
-    }
+    #fixedDiscord{position:fixed;top:12px;right:12px;background:var(--discord);color:white;padding:.6rem .9rem;border-radius:10px;font-weight:700;z-index:9999;display:inline-flex;gap:.6rem;align-items:center;box-shadow:0 8px 26px rgba(88,101,242,0.18);}
 
     /* Contenido principal */
-    main { max-width:980px; margin:34px auto; padding:0 18px; display:none; flex-direction:column; animation: fadeIn 1s forwards;}
-    main.visible {display:flex;}
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+    main{max-width:980px;margin:34px auto;padding:0 18px;display:none;flex-direction:column;animation:fadeIn 1s forwards;}
+    main.visible{display:flex;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
-    .tabs {display:flex; gap:10px; margin-bottom:20px;}
-    .tab {
-      flex:1; text-align:center; padding:12px; border-radius:8px;
-      background: rgba(255,255,255,0.05); font-weight:700; cursor:pointer; transition:.2s;
-    }
-    .tab:hover {background: rgba(255,255,255,0.08);}
-    .tab.active {background: var(--accent); color:#071018;}
+    .tabs{display:flex;gap:10px;margin-bottom:20px;}
+    .tab{flex:1;text-align:center;padding:12px;border-radius:8px;background:rgba(255,255,255,0.05);font-weight:700;cursor:pointer;transition:.2s;}
+    .tab:hover{background:rgba(255,255,255,0.08);}
+    .tab.active{background:var(--accent);color:#071018;}
 
-    .tab-content { display:none; }
-    .tab-content.active { display:block; animation: fadeIn 0.8s forwards; }
+    .tab-content{display:none;}
+    .tab-content.active{display:block;animation:fadeIn 0.8s forwards;}
 
-    .card { background: rgba(255,255,255,0.02); border-radius:12px; padding:20px; margin-bottom:20px; }
-
-    h2.section { color: var(--accent); margin-bottom:12px; font-size:1.3rem; }
-    .role { color: #ffd99e; font-weight:700; margin-top:12px; margin-bottom:6px; }
-    ul.staff-list { list-style:none; padding:0; margin:0 0 8px 0; }
-    ul.staff-list li { padding:.35rem .5rem; border-radius:8px; margin:4px 0; background: rgba(255,255,255,0.02); display:flex; gap:10px; align-items:center;}
-    .tag { min-width:44px; text-align:center; font-weight:800; border-radius:8px; padding:.2rem .5rem; background: rgba(0,0,0,0.2); color:#98a0b3; font-size:.9rem;}
-    .member { font-weight:700; }
-    .group-title { margin-top:10px; color:#98a0b3; font-size:.9rem; }
-
-    footer { text-align:center; padding:20px; color:#98a0b3; font-size:.9rem; }
-    a { color: var(--accent); }
+    .card{background: rgba(255,255,255,0.02);border-radius:12px;padding:20px;margin-bottom:20px;}
+    h2.section{color:var(--accent);margin-bottom:12px;font-size:1.3rem;}
+    .role{color:#ffd99e;font-weight:700;margin-top:12px;margin-bottom:6px;}
+    ul.staff-list{list-style:none;padding:0;margin:0 0 8px 0;}
+    ul.staff-list li{padding:.35rem .5rem;border-radius:8px;margin:4px 0;background: rgba(255,255,255,0.02);display:flex;gap:10px;align-items:center;}
+    .tag{min-width:44px;text-align:center;font-weight:800;border-radius:8px;padding:.2rem .5rem;background: rgba(0,0,0,0.2);color:#98a0b3;font-size:.9rem;}
+    .member{font-weight:700;}
+    .group-title{margin-top:10px;color:#98a0b3;font-size:.9rem;}
+    footer{text-align:center;padding:20px;color:#98a0b3;font-size:.9rem;}
+    a{color:var(--accent);}
   </style>
 </head>
 <body>
+  <canvas id="bgCanvas"></canvas>
 
   <!-- Pantalla de inicio -->
   <div id="landing">
@@ -83,7 +69,7 @@
     <button onclick="enterSite()">Entrar</button>
   </div>
 
-  <!-- Botón Discord fijo -->
+  <!-- Botón Discord -->
   <a id="fixedDiscord" href="https://discord.gg/UTQS4Q9Wpn" target="_blank" rel="noopener noreferrer">
     <i class="fa-brands fa-discord"></i> Unirse al Discord
   </a>
@@ -110,51 +96,35 @@
         <li><div class="tag">✨</div><div class="member">@〘✨〙Harry</div></li>
         <li><div class="tag">✨</div><div class="member">@〘✨〙kalajan232</div></li>
       </ul>
-      <div class="group-title">ALTA DIRECTIVA</div>
-      <div class="role">〘🎬〙Director Administración</div>
-      <ul class="staff-list">
-        <li><div class="tag">🎬</div><div class="member">@〘🎬〙Mando</div></li>
-        <li><div class="tag">🎬</div><div class="member">@〘🎬〙Paneterancio</div></li>
-      </ul>
     </section>
 
     <!-- Evento -->
     <section id="eventos" class="tab-content card">
       <h2 class="section"># Evento Apertura 🏁</h2>
-      <p><em>Primer evento del servidor durante la apertura. ⛹️‍♀️</em></p>
-      <h3>🔹 Actividades principales:</h3>
-      <p><strong>🚗 Exposición de Vehículos Deportivos:</strong> Coche más bonito, rápido y creativo.</p>
-      <p><strong>🚨 Exhibición de Vehículos de Emergencia:</strong> Policía, Bomberos y SAMU.</p>
-      <p><strong>🍔 Puestos de Comida Rápida:</strong> Hamburguesas, perritos, algodón de azúcar.</p>
-      <p><strong>🎶 Música en Vivo con DJ Staff:</strong> Roleo libre, fotos y diversión.</p>
-      <p><strong>💬 Charlas y Presentación del Servidor:</strong> Filosofía y dudas de la comunidad.</p>
-      <p><strong>📅 Día:</strong> 11/10/2025 &nbsp; <strong>🕕 Hora:</strong> 18:15</p>
+      <p><em>Primer evento durante la apertura. ⛹️‍♀️</em></p>
+      <p>🚗 Exposición de Vehículos Deportivos, 🚨 Exhibición de Emergencias, 🍔 Comida, 🎶 DJ Staff, 💬 Charlas.</p>
+      <p>📅 11/10/2025 ⏰ 18:15</p>
     </section>
 
     <!-- Sobre Nosotros -->
     <section id="about" class="tab-content card">
       <h2 class="section">Sobre Nosotros</h2>
-      <p>Bienvenidos a <strong>Spanish City RP</strong>, un servidor ERLC inspirado en Valencia 🌆.</p>
-      <p>Filosofía: roleplay serio, divertido y realista, respetando normas y comunidad.</p>
-      <p>⚙️ Normas básicas: No Fail RP, RDM, VDM; respeto al staff y jugadores.</p>
-      <p>🎉 ¡Únete a nuestra comunidad! <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a></p>
+      <p>Servidor ERLC inspirado en Valencia 🌆. Roleplay serio y divertido, respetando normas y comunidad.</p>
+      <p>🎉 <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a></p>
     </section>
   </main>
 
-  <footer>© 2025 Spanish City RP — Inspirado en Valencia | <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank">Discord Oficial</a></footer>
+  <footer>© 2025 Spanish City RP — Valencia | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a></footer>
 
   <script>
-    function enterSite(){
-      document.getElementById('landing').classList.add('hidden');
-      document.getElementById('mainContent').classList.add('visible');
-    }
-    function showTab(tabId){
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-      document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
-  </script>
+    /* Funciones pestañas y entrar */
+    function enterSite(){document.getElementById('landing').classList.add('hidden');document.getElementById('mainContent').classList.add('visible');}
+    function showTab(tabId){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');document.getElementById(tabId).classList.add('active');}
 
-</body>
-</html>
+    /* Partículas animadas */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize',()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; initParticles
