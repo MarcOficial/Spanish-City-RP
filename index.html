@@ -1,154 +1,102 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Spanish City RP — Inspirado en Valencia</title>
-  <meta name="description" content="Servidor de roleplay serio inspirado en la ciudad de Valencia | ERLC" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Spanish City RP — Valencia</title>
+  <meta name="description" content="Servidor de roleplay inspirado en Valencia | ERLC">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --bg: #061020;
-      --panel: #0f1724;
-      --muted: #98a0b3;
+      --bg-dark: #061020;
       --accent: #ff8200;
       --discord: #5865f2;
       font-family: "Inter", system-ui, sans-serif;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, var(--bg), #031021 120%);
-      color: #eaf0fb;
-      min-height: 100vh;
-    }
-    header {
-      padding: 18px 22px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .brand {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-    }
-    .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), #ffc36b);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #071018;
-      font-weight: 800;
-      font-size: 1.2rem;
-    }
-    h1 { font-size: 1.2rem; margin: 0; }
-    p.subtitle { margin: 0; color: var(--muted); font-size: .9rem; }
+    *{box-sizing:border-box;}
+    body, html {margin:0;padding:0;height:100%;overflow-x:hidden;background: var(--bg-dark); color:white;}
+    body {display:flex; flex-direction:column; align-items:center;}
 
+    /* Pantalla de inicio */
+    #landing {
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: url('https://i.ibb.co/2FqQWq5/valencia-silueta.jpg') center/cover no-repeat;
+      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+      transition: all 1s ease; z-index:10;
+    }
+    #landing.hidden {opacity:0; pointer-events:none;}
+    #landing img { width:150px; height:auto; margin-bottom:20px; }
+    #landing h1 { font-size: 3rem; margin:0; color: var(--accent); text-shadow:0 0 20px #000;}
+    #landing button {
+      margin-top: 30px; padding: 14px 28px; font-size:1.2rem; font-weight:700;
+      border:none; border-radius:12px; background: var(--accent); color:#071018;
+      cursor:pointer; transition: 0.3s; box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+    #landing button:hover { transform: scale(1.05); }
+
+    /* Botón Discord */
     #fixedDiscord {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      background: var(--discord);
-      color: white;
-      padding: .6rem .9rem;
-      border-radius: 10px;
-      font-weight: 700;
-      z-index: 9999;
-      box-shadow: 0 8px 26px rgba(88,101,242,0.18);
-      display: inline-flex;
-      gap: .6rem;
-      align-items: center;
+      position: fixed; top: 12px; right:12px;
+      background: var(--discord); color:white; padding:.6rem .9rem;
+      border-radius:10px; font-weight:700; z-index:9999;
+      display:inline-flex; gap:.6rem; align-items:center;
+      box-shadow:0 8px 26px rgba(88,101,242,0.18);
     }
 
-    main {
-      max-width: 980px;
-      margin: 34px auto;
-      padding: 0 18px;
-    }
+    /* Contenido principal */
+    main { max-width:980px; margin:34px auto; padding:0 18px; display:none; flex-direction:column; animation: fadeIn 1s forwards;}
+    main.visible {display:flex;}
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
 
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+    .tabs {display:flex; gap:10px; margin-bottom:20px;}
     .tab {
-      flex: 1;
-      text-align: center;
-      padding: 12px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
+      flex:1; text-align:center; padding:12px; border-radius:8px;
+      background: rgba(255,255,255,0.05); font-weight:700; cursor:pointer; transition:.2s;
     }
-    .tab:hover { background: rgba(255,255,255,0.08); }
-    .tab.active { background: var(--accent); color: #071018; }
+    .tab:hover {background: rgba(255,255,255,0.08);}
+    .tab.active {background: var(--accent); color:#071018;}
 
-    .tab-content { display: none; }
-    .tab-content.active { display: block; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; animation: fadeIn 0.8s forwards; }
 
-    .card {
-      background: rgba(255,255,255,0.02);
-      border-radius: 12px;
-      padding: 20px;
-    }
+    .card { background: rgba(255,255,255,0.02); border-radius:12px; padding:20px; margin-bottom:20px; }
 
-    h2.section { color: var(--accent); margin: 0 0 12px 0; font-size: 1.1rem; }
-    .role { color: #ffd99e; font-weight: 700; margin-top: 12px; margin-bottom: 6px; }
-    ul.staff-list { list-style: none; padding: 0; margin: 0 0 8px 0; }
-    ul.staff-list li {
-      padding: .35rem .5rem;
-      border-radius: 8px;
-      margin: 4px 0;
-      background: rgba(255,255,255,0.02);
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-    .tag { min-width: 44px; text-align: center; font-weight: 800; border-radius: 8px; padding: .2rem .5rem; background: rgba(0,0,0,0.2); color: var(--muted); font-size: .9rem; }
-    .member { font-weight: 700; }
-    .group-title { margin-top: 10px; color: var(--muted); font-size: .9rem; }
+    h2.section { color: var(--accent); margin-bottom:12px; font-size:1.3rem; }
+    .role { color: #ffd99e; font-weight:700; margin-top:12px; margin-bottom:6px; }
+    ul.staff-list { list-style:none; padding:0; margin:0 0 8px 0; }
+    ul.staff-list li { padding:.35rem .5rem; border-radius:8px; margin:4px 0; background: rgba(255,255,255,0.02); display:flex; gap:10px; align-items:center;}
+    .tag { min-width:44px; text-align:center; font-weight:800; border-radius:8px; padding:.2rem .5rem; background: rgba(0,0,0,0.2); color:#98a0b3; font-size:.9rem;}
+    .member { font-weight:700; }
+    .group-title { margin-top:10px; color:#98a0b3; font-size:.9rem; }
 
-    footer {
-      max-width: 980px;
-      margin: 22px auto 40px;
-      padding: 0 18px;
-      color: var(--muted);
-      font-size: .9rem;
-      text-align: center;
-    }
-
+    footer { text-align:center; padding:20px; color:#98a0b3; font-size:.9rem; }
     a { color: var(--accent); }
   </style>
 </head>
 <body>
+
+  <!-- Pantalla de inicio -->
+  <div id="landing">
+    <img src="Spanish-City-Logo.png" alt="Spanish City RP Logo">
+    <h1>Spanish City RP</h1>
+    <button onclick="enterSite()">Entrar</button>
+  </div>
+
+  <!-- Botón Discord fijo -->
   <a id="fixedDiscord" href="https://discord.gg/UTQS4Q9Wpn" target="_blank" rel="noopener noreferrer">
     <i class="fa-brands fa-discord"></i> Unirse al Discord
   </a>
 
-  <header>
-    <div class="brand">
-      <div class="logo">SC</div>
-      <div>
-        <h1>Spanish City RP</h1>
-        <p class="subtitle">Servidor ERLC — Inspirado en Valencia</p>
-      </div>
-    </div>
-  </header>
-
-  <main>
+  <!-- Contenido principal -->
+  <main id="mainContent">
     <div class="tabs">
       <div class="tab active" onclick="showTab('staff')">👥 Staff</div>
       <div class="tab" onclick="showTab('eventos')">🏁 Evento</div>
       <div class="tab" onclick="showTab('about')">ℹ️ Sobre Nosotros</div>
     </div>
 
-    <!-- STAFF -->
+    <!-- Staff -->
     <section id="staff" class="tab-content active card">
       <h2 class="section">Miembros del Staff</h2>
       <div class="role">〘⚜️〙Creador</div>
@@ -168,85 +116,22 @@
         <li><div class="tag">🎬</div><div class="member">@〘🎬〙Mando</div></li>
         <li><div class="tag">🎬</div><div class="member">@〘🎬〙Paneterancio</div></li>
       </ul>
-      <div class="role">〘🔍〙Coordinador Staff</div>
-      <ul class="staff-list"><li><div class="tag">🔍</div><div class="member">N/A</div></li></ul>
-      <div class="group-title">DIRECCIÓN MEDIA</div>
-      <div class="role">〘🟢〙Supervisor Jefe</div>
-      <ul class="staff-list"><li><div class="tag">🟢</div><div class="member">@〘🟢〙Maquinarex1</div></li></ul>
-      <div class="role">〘🔵〙Supervisor</div>
-      <ul class="staff-list"><li><div class="tag">🔵</div><div class="member">@〘🔵〙Urban</div></li></ul>
-      <div class="role">〘🟣〙Administrador</div>
-      <ul class="staff-list">
-        <li><div class="tag">🟣</div><div class="member">@〘🟣〙Domínguez</div></li>
-        <li><div class="tag">🟣</div><div class="member">@〘🟣〙Kaytipo</div></li>
-      </ul>
-      <div class="role">〘🔴〙Moderador</div>
-      <ul class="staff-list">
-        <li><div class="tag">🔴</div><div class="member">@〘🔴〙Antonio</div></li>
-        <li><div class="tag">🔴</div><div class="member">@〘🔴〙Joel</div></li>
-      </ul>
-      <div class="role">〘🟤〙Moderador Aprendiz</div>
-      <ul class="staff-list">
-        <li><div class="tag">🟤</div><div class="member">@〘🟤〙Lostigres</div></li>
-        <li><div class="tag">🟤</div><div class="member">@〘🟤〙Rafael</div></li>
-      </ul>
-      <div class="role">〘🟡〙Soporte</div>
-      <ul class="staff-list"><li><div class="tag">🟡</div><div class="member">N/A</div></li></ul>
-      <div class="role">〘🟠〙Soporte Aprendiz</div>
-      <ul class="staff-list"><li><div class="tag">🟠</div><div class="member">@〘🟠〙Aitor</div></li></ul>
     </section>
 
-    <!-- EVENTOS -->
+    <!-- Evento -->
     <section id="eventos" class="tab-content card">
       <h2 class="section"># Evento Apertura 🏁</h2>
-      <p><em>Os presentamos el primer evento de Spanish City RP, que será la propia apertura del servidor. Aquí os dejamos las actividades principales. ⛹️‍♀️</em></p>
-
+      <p><em>Primer evento del servidor durante la apertura. ⛹️‍♀️</em></p>
       <h3>🔹 Actividades principales:</h3>
-      <p><strong>🚗 Exposición de Vehículos Deportivos:</strong> Los jugadores podrán mostrar sus mejores coches deportivos y de lujo. Concurso con premios al más bonito, más rápido y más creativo. 🏎️</p>
-      <p><strong>🚨 Exhibición de Vehículos de Emergencia:</strong> Todas las unidades de Policía, Bomberos y SAMU presentarán sus coches, camiones y ambulancias. Se realizará también una exposición de materiales. 🔫</p>
-      <p><strong>🍔 Puestos de Comida Rápida:</strong> Hamburguesas, perritos calientes, algodón de azúcar y refrescos (roleado por jugadores civiles). 🌯</p>
-      <p><strong>🎶 Música en Vivo con DJ STAFF:</strong> Un miembro del Staff será el DJ encargado de animar el evento con música. Roleo libre con baile, diversión y fotos grupales. 🎶</p>
-      <p><strong>💬 Charlas y Presentación del Servidor:</strong> Los altos mandos y coordinadores presentarán las expectativas del servidor, su filosofía de roleplay serio y divertido, y resolverán dudas de la comunidad. 🔰</p>
-
+      <p><strong>🚗 Exposición de Vehículos Deportivos:</strong> Coche más bonito, rápido y creativo.</p>
+      <p><strong>🚨 Exhibición de Vehículos de Emergencia:</strong> Policía, Bomberos y SAMU.</p>
+      <p><strong>🍔 Puestos de Comida Rápida:</strong> Hamburguesas, perritos, algodón de azúcar.</p>
+      <p><strong>🎶 Música en Vivo con DJ Staff:</strong> Roleo libre, fotos y diversión.</p>
+      <p><strong>💬 Charlas y Presentación del Servidor:</strong> Filosofía y dudas de la comunidad.</p>
       <p><strong>📅 Día:</strong> 11/10/2025 &nbsp; <strong>🕕 Hora:</strong> 18:15</p>
     </section>
 
-    <!-- SOBRE NOSOTROS -->
+    <!-- Sobre Nosotros -->
     <section id="about" class="tab-content card">
       <h2 class="section">Sobre Nosotros</h2>
-      <p>Bienvenidos a <strong>Spanish City RP</strong>, un servidor de <em>Emergency Response: Liberty County</em> inspirado en la ciudad de <strong>Valencia</strong> 🌆.</p>
-      <p>Nos esforzamos por ofrecer una experiencia de roleplay seria, divertida y realista, donde cada jugador pueda disfrutar de un ambiente respetuoso y organizado.</p>
-
-      <h3>🎯 Nuestra Filosofía</h3>
-      <ul>
-        <li>Respetar las normas y a todos los jugadores.</li>
-        <li>Fomentar un roleplay inmersivo y coherente.</li>
-        <li>Ofrecer una comunidad unida y activa.</li>
-      </ul>
-
-      <h3>⚙️ Normas Básicas</h3>
-      <ul>
-        <li>No hacer Fail RP, VDM o RDM.</li>
-        <li>Respetar a las fuerzas del orden y al staff.</li>
-        <li>Usar sentido común y mantener la inmersión del roleo.</li>
-      </ul>
-
-      <p>🎉 ¡Gracias por formar parte de esta nueva etapa! Si todavía no te has unido a nuestra comunidad, haz clic aquí:</p>
-      <p><a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="join-link"><i class="fa-brands fa-discord"></i> Unirse al Discord</a></p>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Spanish City RP — Inspirado en Valencia | <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank">Discord Oficial</a>
-  </footer>
-
-  <script>
-    function showTab(tabId) {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-      document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
-  </script>
-</body>
-</html>
+      <p>Bienvenidos a <strong>Spanish City RP</strong>, un servidor ERLC inspi
