@@ -14,18 +14,14 @@
     }
     *{box-sizing:border-box;}
     html,body{margin:0;padding:0;height:100%;overflow-x:hidden;background:#061020;color:white;}
-    body{display:flex; flex-direction:column; align-items:center;}
-    
+    body{display:flex;flex-direction:column;align-items:center;}
+
     /* Canvas de partículas */
-    #bgCanvas {position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+    #bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
     /* Pantalla de inicio */
-    #landing {
-      position: fixed; top:0; left:0; width:100%; height:100%;
-      display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
-      transition: all 1s ease; z-index:10;
-    }
-    #landing.hidden {opacity:0; pointer-events:none;}
+    #landing{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;transition:all 1s ease;z-index:10;}
+    #landing.hidden{opacity:0;pointer-events:none;}
     #landing img{width:150px;height:auto;margin-bottom:20px;}
     #landing h1{font-size:3rem;color:var(--accent);text-shadow:0 0 20px #000;margin:0;}
     #landing button{margin-top:30px;padding:14px 28px;font-size:1.2rem;font-weight:700;border:none;border-radius:12px;background:var(--accent);color:#071018;cursor:pointer;transition:0.3s;box-shadow:0 8px 20px rgba(0,0,0,0.3);}
@@ -60,126 +56,162 @@
   </style>
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
+<canvas id="bgCanvas"></canvas>
 
-  <!-- Pantalla de inicio -->
-  <div id="landing">
-    <img src="Spanish-City-Logo.png" alt="Spanish City RP Logo">
-    <h1>Spanish City RP</h1>
-    <button onclick="enterSite()">Entrar</button>
+<!-- Pantalla de inicio -->
+<div id="landing">
+  <img src="Spanish-City-Logo.png" alt="Spanish City RP Logo">
+  <h1>Spanish City RP</h1>
+  <button onclick="enterSite()">Entrar</button>
+</div>
+
+<!-- Botón Discord -->
+<a id="fixedDiscord" href="https://discord.gg/UTQS4Q9Wpn" target="_blank" rel="noopener noreferrer">
+  <i class="fa-brands fa-discord"></i> Unirse al Discord
+</a>
+
+<!-- Contenido principal -->
+<main id="mainContent">
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('staff')">👥 Staff</div>
+    <div class="tab" onclick="showTab('eventos')">🏁 Eventos</div>
+    <div class="tab" onclick="showTab('normas')">📜 Normas</div>
   </div>
 
-  <!-- Botón Discord -->
-  <a id="fixedDiscord" href="https://discord.gg/UTQS4Q9Wpn" target="_blank" rel="noopener noreferrer">
-    <i class="fa-brands fa-discord"></i> Unirse al Discord
-  </a>
+  <!-- Staff completo -->
+  <section id="staff" class="tab-content active card">
+    <h2 class="section">Staff Completo</h2>
 
-  <!-- Contenido principal -->
-  <main id="mainContent">
-    <div class="tabs">
-      <div class="tab active" onclick="showTab('staff')">👥 Staff</div>
-      <div class="tab" onclick="showTab('eventos')">🏁 Evento</div>
-      <div class="tab" onclick="showTab('about')">ℹ️ Sobre Nosotros</div>
-    </div>
+    <div class="role">〘⚜️〙Creador (CRD)</div>
+    <ul class="staff-list"><li><div class="tag">⚜️</div><div class="member">@〘⚜〙Marc</div></li></ul>
 
-    <!-- Staff -->
-    <section id="staff" class="tab-content active card">
-      <h2 class="section">Miembros del Staff</h2>
-      <div class="role">〘⚜️〙Creador</div>
-      <ul class="staff-list"><li><div class="tag">⚜️</div><div class="member">@〘⚜〙Marc</div></li></ul>
-      <div class="role">〘🌴〙Co Creador</div>
-      <ul class="staff-list"><li><div class="tag">🌴</div><div class="member">@〘🌴〙Mateo</div></li></ul>
-      <div class="role">〘👑〙Propietario/a</div>
-      <ul class="staff-list"><li><div class="tag">👑</div><div class="member">@〘👑〙Lin.</div></li></ul>
-      <div class="role">〘✨〙Co Propietario/a</div>
-      <ul class="staff-list">
-        <li><div class="tag">✨</div><div class="member">@〘✨〙Harry</div></li>
-        <li><div class="tag">✨</div><div class="member">@〘✨〙kalajan232</div></li>
-      </ul>
-    </section>
+    <div class="role">〘🌴〙Co Creador (CCRD)</div>
+    <ul class="staff-list"><li><div class="tag">🌴</div><div class="member">@〘🌴〙Mateo</div></li></ul>
 
-    <!-- Evento -->
-    <section id="eventos" class="tab-content card">
-      <h2 class="section"># Evento Apertura 🏁</h2>
-      <p><em>Primer evento durante la apertura. ⛹️‍♀️</em></p>
-      <p>🚗 Exposición de Vehículos Deportivos, 🚨 Exhibición de Emergencias, 🍔 Comida, 🎶 DJ Staff, 💬 Charlas.</p>
-      <p>📅 11/10/2025 ⏰ 18:15</p>
-    </section>
+    <div class="role">〘👑〙Propietario/a (PROP)</div>
+    <ul class="staff-list"><li><div class="tag">👑</div><div class="member">@〘👑〙Lin.</div></li></ul>
 
-    <!-- Sobre Nosotros -->
-    <section id="about" class="tab-content card">
-      <h2 class="section">Sobre Nosotros</h2>
-      <p>Servidor ERLC inspirado en Valencia 🌆. Roleplay serio y divertido, respetando normas y comunidad.</p>
-      <p>🎉 <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a></p>
-    </section>
-  </main>
+    <div class="role">〘✨〙Co Propietario/a (COPROP)</div>
+    <ul class="staff-list">
+      <li><div class="tag">✨</div><div class="member">@〘✨〙Harry</div></li>
+      <li><div class="tag">✨</div><div class="member">@〘✨〙kalajan232</div></li>
+    </ul>
 
-  <footer>© 2025 Spanish City RP — Valencia | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a></footer>
+    <div class="group-title">ALTA DIRECTIVA</div>
+    <div class="role">〘🎬〙Director Administracion (DA)</div>
+    <ul class="staff-list">
+      <li><div class="tag">🎬</div><div class="member">@〘🎬〙Mando</div></li>
+      <li><div class="tag">🎬</div><div class="member">@〘🎬〙Paneterancio</div></li>
+    </ul>
 
-  <script>
-    // Entrar al sitio
-    function enterSite(){
-      document.getElementById('landing').classList.add('hidden');
-      document.getElementById('mainContent').classList.add('visible');
-    }
+    <div class="role">〘🔍〙Coordinador Staff (CS)</div>
+    <ul class="staff-list">
+      <li><div class="tag">🔍</div><div class="member">N/A</div></li>
+    </ul>
 
-    // Pestañas
-    function showTab(tabId){
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
-      document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');
-      document.getElementById(tabId).classList.add('active');
-    }
+    <div class="group-title">DIRECCIÓN MEDIA</div>
+    <div class="role">〘🟢〙Supervisor Jefe (SJ)</div>
+    <ul class="staff-list"><li><div class="tag">🟢</div><div class="member">@〘🟢〙Maquinarex1</div></li></ul>
+    <div class="role">〘🔵〙Supervisor (SJ)</div>
+    <ul class="staff-list"><li><div class="tag">🔵</div><div class="member">@〘🔵〙Urban</div></li></ul>
 
-    // Partículas animadas
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+    <div class="group-title">SUPERVISIÓN Y GESTIÓN</div>
+    <div class="role">〘🟣〙Administrador (ADM)</div>
+    <ul class="staff-list">
+      <li><div class="tag">🟣</div><div class="member">@〘🟣〙Domínguez</div></li>
+      <li><div class="tag">🟣</div><div class="member">@〘🟣〙Kaytipo</div></li>
+    </ul>
+    <div class="role">〘🔴〙Moderador (MOD)</div>
+    <ul class="staff-list">
+      <li><div class="tag">🔴</div><div class="member">@〘🔴〙Antonio</div></li>
+      <li><div class="tag">🔴</div><div class="member">@〘🔴〙Joel</div></li>
+    </ul>
+    <div class="role">〘🟤〙Moderador Aprendiz (MA)</div>
+    <ul class="staff-list">
+      <li><div class="tag">🟤</div><div class="member">@〘🟤〙Lostigres</div></li>
+      <li><div class="tag">🟤</div><div class="member">@〘🟤〙Rafael</div></li>
+    </ul>
 
-    window.addEventListener('resize', ()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; initParticles();});
+    <div class="group-title">EQUIPO MODERATIVO Y ADMINISTRATIVO</div>
+    <div class="role">〘🟡〙Soporte (SOP)</div>
+    <ul class="staff-list"><li><div class="tag">🟡</div><div class="member">N/A</div></li></ul>
+    <div class="role">〘🟠〙Soporte Aprendiz (SA)</div>
+    <ul class="staff-list"><li><div class="tag">🟠</div><div class="member">@〘🟠〙Aitor</div></li></ul>
+  </section>
 
-    let particles = [];
-    const particleCount = 120;
+  <!-- Eventos -->
+  <section id="eventos" class="tab-content card">
+    <h2 class="section"># Evento Apertura 🏁</h2>
+    <p><em>Primer evento durante la apertura del servidor.</em></p>
+    <p>🚗 Exposición de Vehículos Deportivos, 🚨 Exhibición de Emergencias, 🍔 Comida rápida, 🎶 DJ Staff, 💬 Charlas y Presentación del servidor.</p>
+    <p>📅 11/10/2025 ⏰ 18:15</p>
+  </section>
 
-    function initParticles(){
-      particles = [];
-      for(let i=0;i<particleCount;i++){
-        particles.push({
-          x: Math.random()*w,
-          y: Math.random()*h,
-          r: Math.random()*3+1,
-          dx: (Math.random()-0.5)*0.5,
-          dy: (Math.random()-0.5)*0.5
-        });
-      }
-    }
+  <!-- Normas / Sobre Nosotros -->
+  <section id="normas" class="tab-content card">
+    <h2 class="section">Normas & Sobre Nosotros</h2>
+    <p>Servidor ERLC inspirado en Valencia 🌆. Roleplay serio y divertido, respetando normas y comunidad.</p>
+    <p>Normas principales: No Fail RP, No RDM/VDM, Respeto al staff y jugadores.</p>
+    <p>🎉 Únete a nuestra comunidad: <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank"><i class="fa-brands fa-discord"></i> Discord Oficial</a></p>
+  </section>
+</main>
 
-    function animateParticles(){
-      ctx.clearRect(0,0,w,h);
+<footer>© 2025 Spanish City RP — Valencia | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a></footer>
 
-      // Fondo silueta de Valencia (opcional: reemplaza por tu imagen local si quieres)
-      const img = new Image();
-      img.src = 'Spanish-City-Logo.png'; // Puedes reemplazar por otra imagen de fondo
-      ctx.globalAlpha = 0.05;
-      ctx.drawImage(img,0,0,w,h);
-      ctx.globalAlpha = 1;
+<script>
+  // Entrar al sitio
+  function enterSite(){
+    document.getElementById('landing').classList.add('hidden');
+    document.getElementById('mainContent').classList.add('visible');
+  }
 
-      particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle='rgba(255,255,255,0.6)';
-        ctx.fill();
-        p.x += p.dx;
-        p.y += p.dy;
-        if(p.x<0||p.x>w)p.dx*=-1;
-        if(p.y<0||p.y>h)p.dy*=-1;
+  // Pestañas
+  function showTab(tabId){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    document.querySelector('.tab[onclick*="'+tabId+'"]').classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // Partículas animadas
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+  window.addEventListener('resize', ()=>{w=canvas.width=window.innerWidth; h=canvas.height=window.innerHeight; initParticles();});
+
+  let particles=[];
+  const particleCount=120;
+
+  function initParticles(){
+    particles=[];
+    for(let i=0;i<particleCount;i++){
+      particles.push({
+        x:Math.random()*w,
+        y:Math.random()*h,
+        r:Math.random()*3+1,
+        dx:(Math.random()-0.5)*0.5,
+        dy:(Math.random()-0.5)*0.5
       });
-      requestAnimationFrame(animateParticles);
     }
+  }
 
-    initParticles();
-    animateParticles();
-  </script>
+  function animateParticles(){
+    ctx.clearRect(0,0,w,h);
+    particles.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.6)';
+      ctx.fill();
+      p.x+=p.dx; p.y+=p.dy;
+      if(p.x<0||p.x>w)p.dx*=-1;
+      if(p.y<0||p.y>h)p.dy*=-1;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+
+  initParticles();
+  animateParticles();
+</script>
 </body>
 </html>
