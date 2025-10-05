@@ -18,11 +18,11 @@
   font-family:"Inter",system-ui,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body,html{height:100%;width:100%;background:var(--bg);color:var(--text);overflow-x:hidden;}
+body,html{height:100%;width:100%;background:var(--bg);color:var(--text);overflow-x:hidden;scroll-behavior:smooth;}
 a{color:var(--accent);text-decoration:none;}
 a:hover{text-decoration:underline;}
 
-/* Canvas partículas */
+/* Canvas de partículas */
 #bgCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
 /* Landing */
@@ -44,43 +44,45 @@ a:hover{text-decoration:underline;}
 /* Navbar */
 #navbar{
   position:fixed;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;
-  padding:10px 20px;background:rgba(0,0,0,0.25);backdrop-filter:blur(8px);z-index:999;
-  box-shadow:0 4px 20px rgba(0,0,0,0.4);}
-.nav-left{display:flex;align-items:center;gap:12px;}
-.nav-left h1{font-weight:800;margin:0;font-size:1.5rem;color:var(--accent);}
+  padding:12px 24px;background:linear-gradient(to right, rgba(0,0,0,0.35), rgba(0,0,0,0.25));
+  backdrop-filter:blur(10px);z-index:999;box-shadow:0 4px 25px rgba(0,0,0,0.5);border-bottom:1px solid rgba(255,255,255,0.05);}
+.nav-left{display:flex;align-items:center;gap:12px;cursor:pointer;}
+.nav-left h1{font-weight:800;margin:0;font-size:1.6rem;color:var(--accent);}
 .nav-left p{font-weight:400;margin:0;font-size:0.85rem;color:#ccc;}
+.nav-left:hover h1{color:#ffa540;}
 .nav-right{display:flex;gap:12px;align-items:center;}
-.nav-right .nav-item{padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer;transition:0.2s;}
+.nav-right .nav-item{padding:8px 14px;border-radius:10px;font-weight:600;cursor:pointer;transition:0.3s;}
 .nav-right .nav-item:hover{background:rgba(255,255,255,0.05);}
 .nav-right .nav-item.active{background:var(--accent);color:#071018;}
 
 /* Botón Discord */
-#fixedDiscord{padding:.5rem 1rem;background:var(--discord);border-radius:10px;font-weight:700;color:white;display:flex;align-items:center;gap:.5rem;transition:0.2s;}
+#fixedDiscord{padding:.5rem 1rem;background:var(--discord);border-radius:12px;font-weight:700;color:white;display:flex;align-items:center;gap:.5rem;transition:0.2s;}
 #fixedDiscord:hover{transform:scale(1.05);}
 
 /* Main */
-main{max-width:980px;margin:100px auto 50px auto;padding:0 18px;display:none;flex-direction:column;animation:fadeIn 1s forwards;}
+main{max-width:1000px;margin:120px auto 50px auto;padding:0 18px;display:none;flex-direction:column;animation:fadeIn 1s forwards;}
 main.visible{display:flex;}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 
 /* Tarjetas y Secciones */
 .tab-content{display:none;}
 .tab-content.active{display:block;animation:fadeIn 0.8s forwards;}
-.card{background:var(--card-bg);border-radius:12px;padding:20px;margin-bottom:20px;transition:0.3s;}
+.card{background:var(--card-bg);border-radius:14px;padding:24px;margin-bottom:20px;transition:0.3s;box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 .card:hover{background:rgba(255,255,255,0.04);}
-h2.section{color:var(--accent);margin-bottom:12px;font-size:1.3rem;}
+h2.section{color:var(--accent);margin-bottom:12px;font-size:1.35rem;}
 .role{color:#ffd99e;font-weight:700;margin-top:12px;margin-bottom:6px;}
 ul.staff-list{list-style:none;padding:0;margin:0 0 12px 0;}
-ul.staff-list li{padding:.5rem .5rem;border-radius:8px;margin:5px 0;background:rgba(255,255,255,0.02);display:flex;gap:10px;align-items:center;}
-.tag{min-width:50px;text-align:center;font-weight:800;border-radius:8px;padding:.2rem .5rem;background:var(--tag-bg);color:#98a0b3;font-size:.9rem;}
+ul.staff-list li{padding:.6rem .6rem;border-radius:8px;margin:6px 0;background:rgba(255,255,255,0.02);display:flex;gap:12px;align-items:center;transition:0.3s;}
+ul.staff-list li:hover{background:rgba(255,255,255,0.05);}
+.tag{min-width:50px;text-align:center;font-weight:800;border-radius:8px;padding:.25rem .6rem;background:var(--tag-bg);color:#98a0b3;font-size:.9rem;}
 .member{font-weight:700;}
 .group-title{margin-top:10px;color:#98a0b3;font-size:.9rem;}
 
-/* Corporaciones en tarjetas */
-.corp-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:12px;}
-.corp-card{background:rgba(255,255,255,0.03);padding:20px;border-radius:12px;transition:0.3s;}
-.corp-card:hover{background:rgba(255,255,255,0.06);}
-.corp-card h3{margin-bottom:6px;color:var(--accent);}
+/* Corporaciones */
+.corp-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:12px;}
+.corp-card{background:rgba(255,255,255,0.03);padding:20px;border-radius:14px;transition:0.3s;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.corp-card:hover{background:rgba(255,255,255,0.06);transform:translateY(-3px);}
+.corp-card h3{margin-bottom:8px;color:var(--accent);}
 .corp-card p{color:#ccc;font-size:0.9rem;}
 .corp-PLV{border-left:4px solid #ff5c5c;}
 .corp-CNP{border-left:4px solid #5865f2;}
@@ -89,7 +91,10 @@ ul.staff-list li{padding:.5rem .5rem;border-radius:8px;margin:5px 0;background:r
 .corp-BV{border-left:4px solid #d63031;}
 .corp-CONSERVACION{border-left:4px solid #6c5ce7;}
 
-footer{text-align:center;padding:20px;color:#98a0b3;font-size:.9rem;}
+/* Footer profesional */
+footer{text-align:center;padding:22px;color:#98a0b3;font-size:0.85rem;background:rgba(0,0,0,0.2);border-top:1px solid rgba(255,255,255,0.05);}
+footer a{color:var(--accent);}
+footer a:hover{text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -105,7 +110,7 @@ footer{text-align:center;padding:20px;color:#98a0b3;font-size:.9rem;}
 
 <!-- Navbar -->
 <header id="navbar" style="display:none;">
-  <div class="nav-left">
+  <div class="nav-left" onclick="scrollToLanding()">
     <img src="Spanish-City-Logo.png" alt="Logo" style="width:50px;height:auto;">
     <div>
       <h1>Spanish City RP</h1>
@@ -124,21 +129,15 @@ footer{text-align:center;padding:20px;color:#98a0b3;font-size:.9rem;}
 </header>
 
 <main id="mainContent">
-  <!-- Staff -->
+  <!-- Staff completo -->
   <section id="staff" class="tab-content active card">
     <h2 class="section">Staff Completo</h2>
     <div class="role">〘⚜️〙Creador (CRD)</div>
-    <ul class="staff-list">
-      <li><div class="tag">⚜️</div><div class="member">@〘⚜〙Marc</div></li>
-    </ul>
+    <ul class="staff-list"><li><div class="tag">⚜️</div><div class="member">@〘⚜〙Marc</div></li></ul>
     <div class="role">〘🌴〙Co Creador (CCRD)</div>
-    <ul class="staff-list">
-      <li><div class="tag">🌴</div><div class="member">@〘🌴〙Mateo</div></li>
-    </ul>
+    <ul class="staff-list"><li><div class="tag">🌴</div><div class="member">@〘🌴〙Mateo</div></li></ul>
     <div class="role">〘👑〙Propietario/a (PROP)</div>
-    <ul class="staff-list">
-      <li><div class="tag">👑</div><div class="member">@〘👑〙Lin.</div></li>
-    </ul>
+    <ul class="staff-list"><li><div class="tag">👑</div><div class="member">@〘👑〙Lin.</div></li></ul>
     <div class="role">〘✨〙Co Propietario/a (COPROP)</div>
     <ul class="staff-list">
       <li><div class="tag">✨</div><div class="member">@〘✨〙Harry</div></li>
@@ -209,7 +208,10 @@ footer{text-align:center;padding:20px;color:#98a0b3;font-size:.9rem;}
   </section>
 </main>
 
-<footer>© 2025 Spanish City RP — Valencia | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a></footer>
+<footer>
+© 2025 Spanish City RP — Valencia | Todos los derechos reservados. <br>
+Desarrollado por <strong>Nexus Bots Creations</strong> | <a href="https://discord.gg/UTQS4Q9Wpn">Discord Oficial</a>
+</footer>
 
 <script>
 // Entrar al sitio
@@ -217,6 +219,11 @@ function enterSite(){
   document.getElementById('landing').classList.add('hidden');
   document.getElementById('navbar').style.display='flex';
   document.getElementById('mainContent').classList.add('visible');
+}
+
+// Scroll al landing
+function scrollToLanding(){
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 
 // Cambiar pestañas
@@ -227,7 +234,7 @@ function showTab(tabId){
   document.getElementById(tabId).classList.add('active');
 }
 
-// Partículas
+// Partículas de fondo
 const canvas=document.getElementById('bgCanvas');
 const ctx=canvas.getContext('2d');
 let w=canvas.width=window.innerWidth;
