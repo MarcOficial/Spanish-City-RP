@@ -13,7 +13,7 @@ body {
   color: #fff;
   line-height: 1.6;
   overflow-x: hidden;
-  padding-top: 90px;
+  padding-top: 90px; /* espacio para header fijo */
 }
 
 /* =====================================
@@ -168,40 +168,66 @@ h2 {
 }
 
 /* =====================================
-   Sección Discord
+   Redes Sociales
 ===================================== */
-.discord-section {
+.redes-sociales {
   text-align: center;
   padding: 80px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  margin: 50px auto;
+  max-width: 900px;
 }
 
-.discord-section h2 {
-  font-size: 2.2rem;
+.redes-sociales h2 {
+  font-size: 2rem;
+  color: #ff8200;
   margin-bottom: 20px;
 }
 
-.discord-text {
-  margin-bottom: 30px;
+.redes-sociales p {
   font-size: 1.1rem;
+  margin-bottom: 30px;
 }
 
-.discord-boton-container {
-  margin-top: 30px;
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-.discord-btn {
-  background: #5865f2;
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 1.2rem;
+.social-buttons a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
   border-radius: 12px;
+  font-size: 1.2rem;
   font-weight: 700;
   text-decoration: none;
+  color: #fff;
   transition: 0.3s;
 }
 
-.discord-btn:hover {
-  background: #4752c4;
+.social-buttons a.youtube-btn {
+  background: #ff0000;
+}
+
+.social-buttons a.youtube-btn:hover {
+  background: #cc0000;
+}
+
+.social-buttons a.tiktok-btn {
+  background: #010101;
+}
+
+.social-buttons a.tiktok-btn:hover {
+  background: #333;
+}
+
+.social-buttons i {
+  font-size: 1.5rem;
 }
 
 /* =====================================
@@ -366,5 +392,10 @@ footer a:hover {
 
   .time-box {
     width: 80px;
+  }
+
+  .social-buttons {
+    flex-direction: column;
+    gap: 15px;
   }
 }
