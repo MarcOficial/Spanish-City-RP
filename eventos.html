@@ -1,37 +1,207 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Eventos | Spanish City RP</title>
-<link rel="icon" type="image/png" href="Spanish-City-Logo.png">
-<style>
-  body{background:#0c0f1a;color:white;font-family:"Inter",sans-serif;margin:0;padding:0;}
-  header{background:#000;padding:20px;text-align:center;}
-  header a{color:#ff8200;text-decoration:none;font-size:1.6rem;font-weight:900;}
-  section{max-width:900px;margin:50px auto;padding:20px;line-height:1.7;}
-  h1{color:#ff8200;}
-  footer{text-align:center;padding:20px;background:#06080f;color:#bbb;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos — Spanish City RP</title>
+  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #061020;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      font-size: 1.3rem;
+    }
+
+    header .logo img {
+      width: 45px;
+      height: 45px;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ff8200;
+    }
+
+    .discord-btn {
+      background: #5865f2;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    /* CONTENIDO */
+    .eventos-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 130px 20px 60px;
+    }
+
+    .evento {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      transition: 0.3s;
+    }
+
+    .evento:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .evento h2 {
+      color: #ff8200;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .contador {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      color: #ffd08a;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.7);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ff8200;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-<header><a href="index.html">Spanish City RP</a></header>
-<section>
-<h1>🏁 Evento de Apertura</h1>
-<p><b>Día:</b> 11/10/2025 📆 · <b>Hora:</b> 18:15 ⏰</p>
-<p>
-Buenos días ☁️  
-Os presentamos el primer evento de <b>Spanish City RP</b>, el cual será en la propia apertura del servidor.
-</p>
-<ul>
-  <li>🚗 Exposición de Vehículos Deportivos — Premios al coche más bonito, rápido y creativo.</li>
-  <li>🚨 Exhibición de Vehículos de Emergencia — Presentación de materiales por PLV, CNP, GC, SAMU y BV.</li>
-  <li>🍔 Puestos de Comida Rápida — Roleado por jugadores civiles.</li>
-  <li>🎶 Música en Vivo con DJ STAFF — Roleo libre, baile y diversión.</li>
-  <li>💬 Charlas del Staff — Filosofía del servidor y ronda de preguntas.</li>
-</ul>
-<p><b>¡Os esperamos en la apertura!</b></p>
+
+<!-- HEADER FIJO -->
+<header>
+  <a href="index.html" class="logo">
+    <img src="Spanish-City-Logo.png" alt="Logo">
+    <span>Spanish City RP</span>
+  </a>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="sobre.html">Sobre Nosotros</a>
+    <a href="corporaciones.html">Corporaciones</a>
+    <a href="eventos.html" style="color:#ff8200;">Eventos</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+</header>
+
+<!-- CONTENIDO -->
+<section class="eventos-container">
+  <h1 style="text-align:center; color:#ff8200; margin-bottom:25px;">🎉 Eventos Oficiales</h1>
+
+  <div class="evento">
+    <h2>🏁 Evento de Apertura</h2>
+    <p><strong>Fecha:</strong> 11/10/2025 &nbsp; | &nbsp; <strong>Hora:</strong> 21:00</p>
+    <div class="contador" id="contador"></div>
+
+    <p>
+      Os presentamos el primer evento de <strong>Spanish City RP</strong>, el cual marcará la gran apertura oficial del servidor.  
+      A continuación, te dejamos las <strong>actividades principales</strong> del evento:
+    </p>
+
+    <h3>🔹 Actividades principales</h3>
+    <ul>
+      <li><strong>🚗 Exposición de Vehículos Deportivos:</strong> muestra tu mejor coche deportivo o de lujo.  
+        Concurso con premios al más bonito, más rápido y más creativo.</li>
+
+      <li><strong>🚨 Exhibición de Vehículos de Emergencia:</strong>  
+        Todas las unidades de Policía, Bomberos y SAMU presentarán sus coches, camiones y ambulancias.  
+        También habrá exposición de materiales y equipo táctico.</li>
+
+      <li><strong>🍔 Puestos de Comida Rápida:</strong>  
+        Hamburguesas, perritos calientes, algodón de azúcar y refrescos, todo roleado por jugadores civiles.</li>
+
+      <li><strong>🎶 Música en Vivo con DJ STAFF:</strong>  
+        Un miembro del Staff será el DJ encargado de animar el evento con música en directo.  
+        Roleo libre, baile, diversión y fotos grupales.</li>
+
+      <li><strong>💬 Charlas y Presentación del Servidor:</strong>  
+        Los altos mandos y coordinadores presentarán las expectativas del servidor, su filosofía de roleplay serio y divertido,  
+        y resolverán dudas de la comunidad.</li>
+    </ul>
+
+    <p style="margin-top:15px;font-style:italic;">
+      ¡Os esperamos para disfrutar juntos de esta gran inauguración de <strong>Spanish City RP</strong>! 🚀
+    </p>
+  </div>
 </section>
-<footer>© 2025 Spanish City RP · Nexus Bots Creations · Todos los derechos reservados</footer>
+
+<footer>
+  © 2025 Spanish City RP · Todos los derechos reservados · Diseñado por <a href="#">Nexus Bots Creations</a>
+</footer>
+
+<!-- SCRIPT DEL CONTADOR -->
+<script>
+  const contador = document.getElementById("contador");
+  const fechaEvento = new Date("Oct 11, 2025 21:00:00").getTime();
+
+  const intervalo = setInterval(() => {
+    const ahora = new Date().getTime();
+    const diferencia = fechaEvento - ahora;
+
+    if (diferencia <= 0) {
+      clearInterval(intervalo);
+      contador.innerHTML = "🎉 El evento ha finalizado. ¡Gracias por participar!";
+      return;
+    }
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    contador.innerHTML = `⏳ El evento comienza en <strong>${dias}</strong> días, <strong>${horas}</strong> horas, <strong>${minutos}</strong> min y <strong>${segundos}</strong> seg`;
+  }, 1000);
+</script>
+
 </body>
 </html>
