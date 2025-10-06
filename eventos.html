@@ -23,29 +23,34 @@
     </nav>
   </header>
 
-  <main>
-    <section class="section">
-      <h1>🏁 Evento de Apertura</h1>
-      <p><strong>Día:</strong> 11/10/2025 📆</p>
-      <p><strong>Hora:</strong> 18:15 ⏰</p>
+  <main class="eventos-main">
+    <h1 class="titulo-principal">📅 Próximos Eventos</h1>
 
-      <h2>Cuenta atrás para el evento:</h2>
-      <div class="countdown">
-        <div class="time-box"><span id="days">0</span><br>Días</div>
-        <div class="time-box"><span id="hours">0</span><br>Horas</div>
-        <div class="time-box"><span id="minutes">0</span><br>Minutos</div>
-        <div class="time-box"><span id="seconds">0</span><br>Segundos</div>
+    <!-- Tarjeta del Evento de Apertura -->
+    <div class="evento-card" onclick="toggleDetalles(this)">
+      <div class="evento-header">
+        <h2>🏁 Evento de Apertura Oficial</h2>
+        <p><strong>📅</strong> 11 de Octubre de 2025 — <strong>⏰</strong> 18:15</p>
+        <div class="countdown">
+          <div class="time-box"><span id="days">0</span><br>Días</div>
+          <div class="time-box"><span id="hours">0</span><br>Horas</div>
+          <div class="time-box"><span id="minutes">0</span><br>Minutos</div>
+          <div class="time-box"><span id="seconds">0</span><br>Segundos</div>
+        </div>
       </div>
 
-      <h2>Actividades principales:</h2>
-      <p>🚗 <strong>Exposición de Vehículos Deportivos:</strong> Muestra tus mejores coches y gana premios.</p>
-      <p>🚨 <strong>Exhibición de Vehículos de Emergencia:</strong> Policía, Bomberos y SAMU con sus materiales.</p>
-      <p>🍔 <strong>Puestos de Comida Rápida:</strong> Hamburguesas, perritos, algodón de azúcar y refrescos.</p>
-      <p>🎶 <strong>Música en Vivo:</strong> DJ Staff con música y baile para todos.</p>
-      <p>💬 <strong>Charlas del Staff:</strong> Presentación oficial del servidor y su filosofía RP.</p>
-
-      <p id="eventoFinalizado" style="margin-top:20px;font-weight:700;color:#ff8a00;"></p>
-    </section>
+      <div class="evento-detalles">
+        <h3>📋 Actividades principales</h3>
+        <ul>
+          <li>🚗 Exposición de vehículos deportivos con concurso.</li>
+          <li>🚨 Exhibición de vehículos de emergencia: Policía, SAMU y Bomberos.</li>
+          <li>🎶 Música en vivo con DJ Staff.</li>
+          <li>🍔 Puestos de comida rápida roleados por jugadores.</li>
+          <li>💬 Presentación del servidor y charla con el Staff.</li>
+        </ul>
+        <p class="finalizado" id="eventoFinalizado"></p>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -53,14 +58,20 @@
   </footer>
 
   <script>
-    const countdown = () => {
+    // ======== Función para expandir/ocultar detalles ========
+    function toggleDetalles(card) {
+      card.classList.toggle("activo");
+    }
+
+    // ======== Cuenta atrás del evento ========
+    function countdown() {
       const eventoFecha = new Date("Oct 11, 2025 18:15:00").getTime();
       const ahora = new Date().getTime();
       const diff = eventoFecha - ahora;
 
       if (diff <= 0) {
-        document.querySelector(".countdown").style.display = "none";
         document.getElementById("eventoFinalizado").textContent = "✅ El evento ha terminado. ¡Gracias por participar!";
+        document.querySelector(".countdown").style.display = "none";
         return;
       }
 
@@ -73,7 +84,7 @@
       document.getElementById("hours").textContent = h;
       document.getElementById("minutes").textContent = m;
       document.getElementById("seconds").textContent = s;
-    };
+    }
 
     countdown();
     setInterval(countdown, 1000);
