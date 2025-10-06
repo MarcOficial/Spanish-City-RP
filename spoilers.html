@@ -1,145 +1,34 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spoilers / Novedades — Spanish City RP</title>
-  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+.spoilers-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  justify-items: center;
+  padding: 20px 0;
+}
 
-  <!-- ================= HEADER ================= -->
-  <header>
-    <a href="index.html" class="logo">
-      <img src="Spanish-City-Logo.png" alt="Logo Spanish City RP">
-      <span>Spanish City RP</span>
-    </a>
-    <nav>
-    <a href="index.html" class="activo">Inicio</a>
-    <a href="sobre.html">Sobre Nosotros</a>
-    <a href="facciones-legales.html">Facciones Legales</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="guias.html">Guias</a>
-    <a href="fotos.html">Fotos Rol</a>
-    <a href="spoilers.html">Spoilers</a>
-      <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
-    </nav>
-  </header>
+.spoiler-card img {
+  width: 100%;
+  height: 220px; /* altura fija para que todas tengan el mismo tamaño */
+  object-fit: cover; /* cubre todo el cuadro sin deformarse */
+  display: block;
+  transition: transform 0.3s;
+}
 
-  <!-- ================= CONTENIDO ================= -->
-  <main>
-    <section class="hero">
-      <h1>🚨 Spoilers de Spanish City RP</h1>
-      <p>Aquí puedes ver todos los coches, uniformes y sistemas nuevos que se añadirán próximamente al servidor.</p>
-    </section>
+.spoiler-card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: #ffb86b;
+  padding: 8px 10px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
 
-    <!-- ================= GALERÍA DE SPOILERS ================= -->
-    <section>
-      <h2>📸 Spoilers Recientes</h2>
-      <div class="spoilers-grid">
-        <div class="spoiler-card">
-          <img src="Ambulancia Bombers Valencia.png" alt="Ambulancia Bombers Valencia">
-          <div class="overlay"><p>🚑 Ambulancia Bombers Valencia</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2008 GC USECIC.png" alt="Coche 2008 GC USECIC">
-          <div class="overlay"><p>🚔 Coche 2008 GC USECIC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2008 GC.webp" alt="Coche 2008 GC">
-          <div class="overlay"><p>🚔 Coche 2008 GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2019 CNP.png" alt="Coche 2019 CNP">
-          <div class="overlay"><p>👮 Coche 2019 CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 CNP.png" alt="Coche 2021 CNP">
-          <div class="overlay"><p>👮 Coche 2021 CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 GC USECIC.png" alt="Coche 2021 GC USECIC">
-          <div class="overlay"><p>🚔 Coche 2021 GC USECIC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 GC.png" alt="Coche 2021 GC">
-          <div class="overlay"><p>🚔 Coche 2021 GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche Bombers Valencia.png" alt="Coche Bombers Valencia">
-          <div class="overlay"><p>🚒 Coche Bombers Valencia</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche CSV.png" alt="Coche CSV">
-          <div class="overlay"><p>🚛 Coche CSV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC Seprona 2008.webp" alt="Coche GC Seprona 2008">
-          <div class="overlay"><p>🚓 Coche GC Seprona 2008</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC V2.png" alt="Coche GC V2">
-          <div class="overlay"><p>🚓 Coche GC V2</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC V21.png" alt="Coche GC V21">
-          <div class="overlay"><p>🚓 Coche GC V21</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC.png" alt="Coche GC">
-          <div class="overlay"><p>🚓 Coche GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche PLV.png" alt="Coche PLV">
-          <div class="overlay"><p>🚔 Coche PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta CNP UIP.png" alt="Furgoneta CNP UIP">
-          <div class="overlay"><p>👮 Furgoneta CNP UIP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta PLV Atestados Informes.png" alt="Furgoneta PLV Atestados Informes">
-          <div class="overlay"><p>🚔 Furgoneta PLV Atestados</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta PLV.png" alt="Furgoneta PLV">
-          <div class="overlay"><p>🚔 Furgoneta PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón CNP SUBSUELO.png" alt="Furgón CNP SUBSUELO">
-          <div class="overlay"><p>👮 Furgón CNP SUBSUELO</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón CNP UNIDAD DE DOCUMENTACIÓN.png" alt="Furgón CNP UNIDAD DE DOCUMENTACIÓN">
-          <div class="overlay"><p>👮 Furgón CNP DOCUMENTACIÓN</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón PLV.png" alt="Furgón PLV">
-          <div class="overlay"><p>🚔 Furgón PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Grúa CSV.png" alt="Grúa CSV">
-          <div class="overlay"><p>🚛 Grúa CSV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Quad CNP.png" alt="Quad CNP">
-          <div class="overlay"><p>👮 Quad CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Vehículo Limpieza CSV.png" alt="Vehículo Limpieza CSV">
-          <div class="overlay"><p>🧹 Vehículo Limpieza CSV</p></div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    © 2025 <strong>Spanish City RP</strong> — Todos los derechos reservados.  
-    <br>
-    Desarrollado por <strong>Nexus Bots Creations</strong>.
-  </footer>
-
-</body>
-</html>
+.spoiler-card:hover .overlay {
+  opacity: 1;
+}
