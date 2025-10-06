@@ -9,7 +9,6 @@
 </head>
 <body>
 
-<!-- HEADER FIJO -->
 <header>
   <a href="index.html" class="logo">
     <img src="Spanish-City-Logo.png" alt="Logo">
@@ -24,7 +23,6 @@
   </nav>
 </header>
 
-<!-- CONTENIDO -->
 <main class="eventos-container">
   <h1 class="titulo-principal">🎉 Eventos Oficiales</h1>
 
@@ -35,42 +33,23 @@
 
     <p>
       Os presentamos el primer evento de <strong>Spanish City RP</strong>, el cual marcará la gran apertura oficial del servidor.  
-      A continuación, te dejamos las <strong>actividades principales</strong> del evento:
+      A continuación, te dejamos las actividades principales del evento:
     </p>
 
-    <h3>🔹 Actividades principales</h3>
     <ul>
-      <li><strong>🚗 Exposición de Vehículos Deportivos:</strong> muestra tu mejor coche deportivo o de lujo.  
-        Concurso con premios al más bonito, más rápido y más creativo.</li>
-
-      <li><strong>🚨 Exhibición de Vehículos de Emergencia:</strong>  
-        Todas las unidades de Policía, Bomberos y SAMU presentarán sus coches, camiones y ambulancias.  
-        También habrá exposición de materiales y equipo táctico.</li>
-
-      <li><strong>🍔 Puestos de Comida Rápida:</strong>  
-        Hamburguesas, perritos calientes, algodón de azúcar y refrescos, todo roleado por jugadores civiles.</li>
-
-      <li><strong>🎶 Música en Vivo con DJ STAFF:</strong>  
-        Un miembro del Staff será el DJ encargado de animar el evento con música en directo.  
-        Roleo libre, baile, diversión y fotos grupales.</li>
-
-      <li><strong>💬 Charlas y Presentación del Servidor:</strong>  
-        Los altos mandos y coordinadores presentarán las expectativas del servidor, su filosofía de roleplay serio y divertido,  
-        y resolverán dudas de la comunidad.</li>
+      <li>🚗 Exposición de Vehículos Deportivos</li>
+      <li>🚨 Exhibición de Vehículos de Emergencia</li>
+      <li>🍔 Puestos de Comida Rápida</li>
+      <li>🎶 Música en Vivo con DJ STAFF</li>
+      <li>💬 Charlas y Presentación del Servidor</li>
     </ul>
-
-    <p class="final-msg">
-      ¡Os esperamos para disfrutar juntos de esta gran inauguración de <strong>Spanish City RP</strong>! 🚀
-    </p>
   </section>
 </main>
 
-<!-- FOOTER -->
 <footer>
   © 2025 Spanish City RP · Todos los derechos reservados · Diseñado por <a href="#">Nexus Bots Creations</a>
 </footer>
 
-<!-- SCRIPT DEL CONTADOR -->
 <script>
   const contador = document.getElementById("contador");
   const fechaEvento = new Date("Oct 11, 2025 21:00:00").getTime();
@@ -90,7 +69,7 @@
     const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    contador.innerHTML = `⏳ El evento comienza en <strong>${dias}</strong>d <strong>${horas}</strong>h <strong>${minutos}</strong>m <strong>${segundos}</strong>s`;
+    contador.innerHTML = `⏳ Comienza en ${dias}d ${horas}h ${minutos}m ${segundos}s`;
   }, 1000);
 </script>
 
