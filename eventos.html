@@ -3,61 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eventos — Spanish City RP</title>
-  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
+  <title>Eventos | Spanish City RP</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
 </head>
 <body>
-<header>
-  <a href="index.html" class="logo">
-    <img src="Spanish-City-Logo.png" alt="Logo">
-    <span>Spanish City RP</span>
-  </a>
-  <nav>
-    <a href="index.html">Inicio</a>
-    <a href="sobre.html">Sobre Nosotros</a>
-    <a href="corporaciones.html">Corporaciones</a>
-    <a href="eventos.html" class="activo">Eventos</a>
-    <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
-  </nav>
-</header>
-
-<main>
-  <section class="hero">
-    <h1>🎉 Próximos Eventos</h1>
-    <p>Descubre las actividades que tenemos preparadas para la comunidad de Spanish City RP.</p>
-  </section>
-
-  <section class="caracteristicas">
-    <h2>Evento Apertura 🏁</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <h3>🚗 Exposición de Vehículos Deportivos</h3>
-        <p>Los jugadores podrán mostrar sus mejores coches deportivos y de lujo. Concurso con premios al más bonito, más rápido y más creativo.</p>
-      </div>
-      <div class="card">
-        <h3>🚨 Exhibición de Vehículos de Emergencia</h3>
-        <p>Policía, Bomberos y SAMU mostrarán sus vehículos y materiales en exhibición.</p>
-      </div>
-      <div class="card">
-        <h3>🍔 Puestos de Comida Rápida</h3>
-        <p>Hamburguesas, perritos calientes, algodón de azúcar y refrescos (roleado por jugadores civiles).</p>
-      </div>
-      <div class="card">
-        <h3>🎶 Música en Vivo con DJ STAFF</h3>
-        <p>Un miembro del Staff animará el evento con música. Roleo libre con baile, diversión y fotos grupales.</p>
-      </div>
-      <div class="card">
-        <h3>💬 Charlas y Presentación del Servidor</h3>
-        <p>Altos mandos y coordinadores presentarán filosofía, expectativas y resolverán dudas de la comunidad.</p>
-      </div>
+  <header>
+    <div class="logo">
+      <img src="Spanish-City-Logo.png" alt="Logo Spanish City RP">
+      <h1><a href="index.html">Spanish City RP</a></h1>
     </div>
-    <p style="margin-top:30px; font-weight:bold;">Día: 11/10/2025 📆 | Hora: 18:15 ⏰</p>
-  </section>
-</main>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="sobre.html">Sobre Nosotros</a></li>
+        <li><a href="staff.html">Staff</a></li>
+        <li><a href="corporaciones.html">Corporaciones</a></li>
+        <li><a href="eventos.html" class="active">Eventos</a></li>
+        <li><a href="novedades.html">Novedades</a></li>
+      </ul>
+    </nav>
+    <a href="https://discord.gg/UTQS4Q9Wpn" class="discord-btn" target="_blank">
+      <i class="fab fa-discord"></i> Unirse al Discord
+    </a>
+  </header>
 
-<footer>
-  © 2025 Spanish City RP · Todos los derechos reservados · Diseñado por <a href="#">Nexus Bots Creations</a>
-</footer>
+  <main class="eventos-page">
+    <section class="evento-detalle">
+      <h2>🎉 Evento de Apertura — 11/10/2025</h2>
+      <p>¡Prepárate para la gran apertura de <strong>Spanish City RP</strong> inspirado en la hermosa ciudad de Valencia! 🌆</p>
+
+      <!-- Contenedor de cuenta atrás -->
+      <div id="countdown-container">
+        <h3>⏰ Cuenta atrás para el evento</h3>
+        <div id="countdown">
+          <span id="days">00</span>d :
+          <span id="hours">00</span>h :
+          <span id="minutes">00</span>m :
+          <span id="seconds">00</span>s
+        </div>
+        <p id="evento-status"></p>
+      </div>
+
+      <div class="evento-descripcion">
+        <h3>Detalles del Evento 🏁</h3>
+        <p>Buenos días ☁️</p>
+        <p>
+          Os presentamos el primer evento de <strong>Spanish City RP</strong> el día <strong>11/10/2025 a las 18:15</strong>.  
+          A continuación, os dejamos las actividades principales. ⛹️‍♀️
+        </p>
+
+        <ul class="evento-lista">
+          <li>🚗 <strong>Exposición de Vehículos Deportivos</strong> — Premios al más bonito, rápido y creativo.</li>
+          <li>🚨 <strong>Exhibición de Vehículos de Emergencia</strong> — Policía, Bomberos y SAMU presentarán sus unidades.</li>
+          <li>🍔 <strong>Puestos de Comida Rápida</strong> — Hamburguesas, perritos calientes y refrescos roleados por civiles.</li>
+          <li>🎶 <strong>Música en Vivo con DJ STAFF</strong> — Roleo libre con música, baile y diversión.</li>
+          <li>💬 <strong>Charlas y Presentación del Servidor</strong> — Los altos mandos presentarán la filosofía del servidor.</li>
+        </ul>
+
+        <p class="evento-final">
+          <strong>📅 Día:</strong> 11/10/2025  
+          <br>
+          <strong>⏰ Hora:</strong> 18:15  
+          <br>
+          <strong>📍 Lugar:</strong> Ciudad principal de Spanish City RP
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Spanish City RP. Todos los derechos reservados. Diseñado por Nexus Bots Creations ⚙️</p>
+  </footer>
+
+  <script>
+    // Fecha objetivo: 11 octubre 2025 21:00
+    const countdownDate = new Date("Oct 11, 2025 21:00:00").getTime();
+
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (distance > 0) {
+        document.getElementById("days").innerText = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+        document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+      } else {
+        clearInterval(interval);
+        document.getElementById("countdown").style.display = "none";
+        document.getElementById("evento-status").innerHTML = "🎉 ¡El evento ya ha finalizado! 🎉";
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
