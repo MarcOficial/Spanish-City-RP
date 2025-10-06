@@ -1,187 +1,158 @@
-/* ============================= */
-/*   ESTILO GLOBAL SPANISH CITY  */
-/* ============================= */
-
-/* Variables de color */
-:root {
-    --accent: #ff8200;        /* Naranja principal */
-    --discord: #5865f2;       /* Azul Discord */
-    --bg-dark: #061020;       /* Fondo oscuro */
-    --text-light: #ffffff;    /* Texto principal */
-    --card-bg: rgba(255,255,255,0.05);
-    --card-border: rgba(255,255,255,0.1);
-    --hover-card-bg: rgba(255,255,255,0.08);
-    --font: "Inter", sans-serif;
-}
-
-/* ============================= */
-/*   ESTILO BASE                 */
-/* ============================= */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* General */
 body {
-    font-family: var(--font);
-    background-color: var(--bg-dark);
-    color: var(--text-light);
-    line-height: 1.6;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, #061020, #0a1a2e);
+  color: #fff;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* ============================= */
-/*   HEADER FIJO                 */
-/* ============================= */
 header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(10px);
-    z-index: 999;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-}
-
-header .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 800;
-    font-size: 1.3rem;
-    color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
 }
 
 header .logo img {
-    width: 45px;
-    height: 45px;
-    border-radius: 8px;
+  height: 50px;
+  vertical-align: middle;
 }
 
 nav a {
-    margin-left: 25px;
-    font-weight: 500;
-    transition: color 0.3s;
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
 }
 
-nav a:hover {
-    color: var(--accent);
+nav a.discord-btn {
+  background: #5865f2;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
-nav a.activo {
-    color: var(--accent);
+nav a.discord-btn:hover {
+  background: #4752c4;
+}
+
+/* Hero */
+.hero {
+  padding: 150px 20px 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ff8200;
+}
+
+.hero p {
+  margin-top: 15px;
+  font-size: 1.2rem;
+}
+
+.boton-principal {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  color: #071018;
+  background: #ff8200;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.boton-principal:hover {
+  transform: scale(1.05);
+}
+
+/* Características */
+.caracteristicas {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.caracteristicas h2 {
+  font-size: 2.5rem;
+  margin-bottom: 50px;
+  color: #ff8200;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+  padding: 30px 20px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+  color: #ff8200;
+  margin-bottom: 15px;
+}
+
+/* Discord */
+.discord-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.discord-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  color: #ff8200;
+}
+
+.discord-text {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+.discord-boton-container {
+  margin-top: 20px;
 }
 
 .discord-btn {
-    background-color: var(--discord);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: 700;
-    transition: transform 0.2s;
+  background: #5865f2;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s;
 }
 
 .discord-btn:hover {
-    transform: scale(1.05);
+  background: #4752c4;
 }
 
-/* ============================= */
-/*   TÍTULOS                     */
-h1, h2, h3 {
-    color: var(--accent);
-    margin-bottom: 15px;
-}
-
-.titulo-principal {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* ============================= */
-/*   CONTENEDORES PRINCIPALES    */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 120px 20px 60px;
-}
-
-/* ============================= */
-/*   EVENTOS                     */
-.evento {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 40px;
-    transition: all 0.3s;
-}
-
-.evento:hover {
-    background: var(--hover-card-bg);
-    transform: translateY(-5px);
-}
-
-.contador {
-    font-size: 1.3rem;
-    color: #ffd08a;
-    font-weight: 600;
-    text-align: center;
-    margin: 15px 0;
-}
-
-.final-msg {
-    font-style: italic;
-    margin-top: 15px;
-}
-
-/* ============================= */
-/*   CORPORACIONES               */
-.corporaciones-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.corporacion {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 20px;
-    transition: all 0.3s;
-}
-
-.corporacion:hover {
-    background: var(--hover-card-bg);
-    transform: translateY(-5px);
-}
-
-.corporacion h3 {
-    color: var(--accent);
-    margin-bottom: 10px;
-}
-
-/* ============================= */
-/*   FOOTER                      */
+/* Footer */
 footer {
-    text-align: center;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.7);
-    border-top: 1px solid var(--card-border);
-    font-size: 0.9rem;
+  text-align: center;
+  padding: 25px 20px;
+  background: rgba(0,0,0,0.7);
+  margin-top: 50px;
 }
-
-footer a {
-    color: var(--accent);
-    font-weight: 600;
-}
-
