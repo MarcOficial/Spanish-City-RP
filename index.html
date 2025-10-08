@@ -6,6 +6,8 @@
   <title>Bienvenido — Spanish City RP</title>
   <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
   <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome para iconos -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header>
@@ -24,6 +26,13 @@
     <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
   </nav>
 </header>
+
+<!-- ================= MÚSICA DE FONDO ================= -->
+<audio id="bgMusic" loop autoplay>
+  <source src="musica.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
+<button id="musicBtn" class="music-btn">🔊</button>
 
 <main class="bienvenida-container">
   <section class="hero">
@@ -63,19 +72,18 @@
   </section>
 
   <!-- ================= REDES SOCIALES ================= -->
-<section class="redes-sociales">
-  <h2>📱 Conéctate con nosotros</h2>
-  <p>Síguenos en nuestras redes para estar al día de todas las novedades y eventos de <strong>Spanish City RP</strong>.</p>
-  <div class="social-buttons">
-    <a href="https://youtube.com/@spacityrp?si=NwPh0Jp-O9jNsTQ1" target="_blank" class="youtube-btn">
-      <i class="fab fa-youtube"></i> Canal YouTube
-    </a>
-    <a href="https://www.tiktok.com/@spacityrp?_t=ZN-906EnJn4ilq&_r=1" target="_blank" class="tiktok-btn">
-      <i class="fab fa-tiktok"></i> Canal TikTok
-    </a>
-  </div>
-</section>
-
+  <section class="redes-sociales">
+    <h2>📱 Conéctate con nosotros</h2>
+    <p>Síguenos en nuestras redes para estar al día de todas las novedades y eventos de <strong>Spanish City RP</strong>.</p>
+    <div class="social-buttons">
+      <a href="https://youtube.com/@spacityrp?si=NwPh0Jp-O9jNsTQ1" target="_blank" class="youtube-btn">
+        <i class="fab fa-youtube"></i> Canal YouTube
+      </a>
+      <a href="https://www.tiktok.com/@spacityrp?_t=ZN-906EnJn4ilq&_r=1" target="_blank" class="tiktok-btn">
+        <i class="fab fa-tiktok"></i> Canal TikTok
+      </a>
+    </div>
+  </section>
 
   <section class="discord-section">
     <h2>Conéctate con nosotros</h2>
@@ -89,5 +97,21 @@
 <footer>
   © 2025 Spanish City RP · Todos los derechos reservados · Diseñado por <a href="#">Nexus Bots Creations</a>
 </footer>
+
+<!-- ================= SCRIPT PARA BOTÓN DE MÚSICA ================= -->
+<script>
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+
+  musicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicBtn.textContent = '🔊';
+    } else {
+      music.pause();
+      musicBtn.textContent = '🔇';
+    }
+  });
+</script>
 </body>
 </html>
