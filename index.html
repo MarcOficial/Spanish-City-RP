@@ -91,15 +91,14 @@
 </footer>
 
 <!-- ================= MÚSICA DE FONDO ================= -->
-<audio id="bgMusic" autoplay loop muted>
-  <source src="musica.mp3" type="audio/mpeg">
-  Tu navegador no soporta audio.
+<audio id="bgMusic" autoplay loop>
+  <source src="regard_zen-11873.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
 </audio>
 
 <!-- Botón flotante -->
 <button id="musicBtn" class="music-btn">🔇</button>
 
-<!-- ================= ESTILO DEL BOTÓN ================= -->
 <style>
 .music-btn {
   position: fixed;
@@ -123,7 +122,6 @@
 }
 </style>
 
-<!-- ================= SCRIPT ================= -->
 <script>
 const music = document.getElementById('bgMusic');
 const musicBtn = document.getElementById('musicBtn');
@@ -138,6 +136,3 @@ musicBtn.addEventListener('click', () => {
   }
 });
 </script>
-
-</body>
-</html>
