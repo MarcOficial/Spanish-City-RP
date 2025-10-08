@@ -28,11 +28,52 @@
 </header>
 
 <!-- ================= MÚSICA DE FONDO ================= -->
-<audio id="bgMusic" loop autoplay>
+<audio id="bgMusic" loop>
   <source src="musica.mp3" type="audio/mpeg">
   Tu navegador no soporta audio.
 </audio>
-<button id="musicBtn" class="music-btn">🔊</button>
+
+<!-- Botón flotante -->
+<button id="musicBtn" class="music-btn">🔇</button>
+
+<style>
+.music-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #ff8200;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 1001;
+  transition: transform 0.3s, background 0.3s;
+}
+
+.music-btn:hover {
+  transform: scale(1.1);
+  background: #ffb347;
+}
+</style>
+
+<script>
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+
+  musicBtn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      musicBtn.textContent = '🔊';
+    } else {
+      music.pause();
+      musicBtn.textContent = '🔇';
+    }
+  });
+</script>
+
 
 <main class="bienvenida-container">
   <section class="hero">
