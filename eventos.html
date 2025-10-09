@@ -1,103 +1,88 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eventos | Spanish City RP</title>
-  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<!-- ================= SCRIPTS ================= -->
+<script>
+  // Desplegar detalles al hacer clic
+  function toggleDetalles(element) {
+    element.classList.toggle('activo');
+  }
 
-  <!-- ================= HEADER ================= -->
-  <header>
-    <a href="index.html" class="logo">
-      <img src="Spanish-City-Logo.png" alt="Logo">
-      <span>Spanish City RP</span>
-    </a>
-    <nav>
-     <a href="index.html" class="activo">Inicio</a>
-    <a href="sobre.html">Sobre Nosotros</a>
-    <a href="facciones-legales.html">Facciones Legales</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="guias.html">Guias</a>
-    <a href="fotos.html">Fotos Rol</a>
-    <a href="spoilers.html">Spoilers</a>
-      <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
-    </nav>
-  </header>
+  // ================= CUENTA ATRÁS =================
+  function iniciarCuentaAtras() {
+    const countdowns = document.querySelectorAll('.countdown');
 
-  <!-- ================= CONTENIDO PRINCIPAL ================= -->
-  <main class="eventos-main">
-    <h1 class="titulo-principal">📅 Próximos Eventos</h1>
+    countdowns.forEach(cd => {
+      // Fecha exacta del evento (hora de España)
+      const targetDate = new Date("2025-10-11T18:15:00+02:00").getTime();
 
-    <!-- ======== Evento 1 ======== -->
-    <div class="evento-card" onclick="toggleDetalles(this)">
-      <div class="evento-header">
-        <h2>🚀 Gran Apertura de Spanish City RP</h2>
-        <div class="countdown" data-date="2025-10-25T18:00:00"></div>
-      </div>
-      <div class="evento-detalles">
-        <h3>Detalles del Evento:</h3>
-        <ul>
-          <li>📍 Ubicación: Servidor de Discord oficial</li>
-          <li>🕕 Fecha: 11 de Octubre de 2025, 18:15h (hora España)</li>
-          <li>🎉 Actividades: Presentación, convoy policial, sorteos y sorpresas</li>
-          <li>👮 Participan todas las corporaciones</li>
-          <li>🪩 ¡Ven con tus amigos y disfruta del mejor roleplay!</li>
-        </ul>
-      </div>
-    </div>
-    
-  </main>
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
 
-  <!-- ================= FOOTER ================= -->
-  <footer>
-    © 2025 <strong>Spanish City RP</strong> — Todos los derechos reservados.  
-    <br>
-    <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank">Únete a nuestro Discord</a>
-  </footer>
+        if (distance <= 0) {
+          clearInterval(interval);
+          cd.innerHTML = "<span class='finalizado'>🎊 ¡El evento ha comenzado!</span>";
+          return;
+        }
 
-  <!-- ================= SCRIPTS ================= -->
-  <script>
-    // Desplegar detalles al hacer clic
-    function toggleDetalles(element) {
-      element.classList.toggle('activo');
-    }
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // Cuenta atrás
-    function iniciarCuentaAtras() {
-      const countdowns = document.querySelectorAll('.countdown');
+        cd.innerHTML = `
+          <div class="time-box"><span>${days}</span><small>Días</small></div>
+          <div class="time-box"><span>${hours}</span><small>Horas</small></div>
+          <div class="time-box"><span>${minutes}</span><small>Min</small></div>
+          <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
+        `;
+      }, 1000);
+    });
+  }
 
-      countdowns.forEach(cd => {
-        const targetDate = new Date(cd.getAttribute('data-date')).getTime();
+  iniciarCuentaAtras();
+</script>
 
-        const interval = setInterval(() => {
-          const now = new Date().getTime();
-          const distance = targetDate - now;
+<style>
+/* ======== ESTILO CUENTA ATRÁS ======== */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
 
-          if (distance <= 0) {
-            clearInterval(interval);
-            cd.innerHTML = "<span class='finalizado'>🎊 Evento en curso o finalizado</span>";
-            return;
-          }
+.time-box {
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 18px;
+  text-align: center;
+  min-width: 75px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
 
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+.time-box:hover {
+  transform: scale(1.05);
+}
 
-          cd.innerHTML = `
-            <div class="time-box"><span>${days}</span>Días</div>
-            <div class="time-box"><span>${hours}</span>Horas</div>
-            <div class="time-box"><span>${minutes}</span>Min</div>
-            <div class="time-box"><span>${seconds}</span>Seg</div>
-          `;
-        }, 1000);
-      });
-    }
+.time-box span {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ff8200;
+}
 
-    iniciarCuentaAtras();
-  </script>
-</body>
-</html>
+.time-box small {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.finalizado {
+  font-weight: bold;
+  color: #00ff8c;
+  background: rgba(0,255,140,0.1);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+</style>
