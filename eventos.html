@@ -1,88 +1,187 @@
-<!-- ================= SCRIPTS ================= -->
-<script>
-  // Desplegar detalles al hacer clic
-  function toggleDetalles(element) {
-    element.classList.toggle('activo');
-  }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos | Spanish City RP</title>
+  <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  // ================= CUENTA ATRÁS =================
-  function iniciarCuentaAtras() {
-    const countdowns = document.querySelectorAll('.countdown');
+  <!-- ================= HEADER ================= -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="Spanish-City-Logo.png" alt="Logo">
+      <span>Spanish City RP</span>
+    </a>
+    <nav>
+      <a href="index.html">Inicio</a>
+      <a href="sobre.html">Sobre Nosotros</a>
+      <a href="facciones-legales.html">Facciones Legales</a>
+      <a href="eventos.html" class="activo">Eventos</a>
+      <a href="guias.html">Guías</a>
+      <a href="fotos.html">Fotos Rol</a>
+      <a href="spoilers.html">Spoilers</a>
+      <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
+    </nav>
+  </header>
 
-    countdowns.forEach(cd => {
-      // Fecha exacta del evento (hora de España)
-      const targetDate = new Date("2025-10-11T18:15:00+02:00").getTime();
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <main class="eventos-main">
+    <h1 class="titulo-principal">📅 Próximos Eventos</h1>
 
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+    <!-- ======== Evento 1 ======== -->
+    <div class="evento-card" onclick="toggleDetalles(this)">
+      <div class="evento-header">
+        <h2>🚀 Gran Apertura de Spanish City RP</h2>
+        <!-- ✅ Fecha corregida: 11 de octubre de 2025, 18:15 -->
+        <div class="countdown" data-date="2025-10-11T18:15:00+02:00"></div>
+      </div>
+      <div class="evento-detalles">
+        <h3>Detalles del Evento:</h3>
+        <ul>
+          <li>📍 Ubicación: Servidor de Discord oficial</li>
+          <li>🕕 Fecha: 11 de Octubre de 2025, 18:15h (hora España)</li>
+          <li>🎉 Actividades: Presentación, convoy policial, sorteos y sorpresas</li>
+          <li>👮 Participan todas las corporaciones</li>
+          <li>🪩 ¡Ven con tus amigos y disfruta del mejor roleplay!</li>
+        </ul>
+      </div>
+    </div>
+  </main>
 
-        if (distance <= 0) {
-          clearInterval(interval);
-          cd.innerHTML = "<span class='finalizado'>🎊 ¡El evento ha comenzado!</span>";
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    © 2025 <strong>Spanish City RP</strong> — Todos los derechos reservados.<br>
+    <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank">Únete a nuestro Discord</a>
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Desplegar detalles al hacer clic
+    function toggleDetalles(element) {
+      element.classList.toggle('activo');
+    }
+
+    // ================= CUENTA ATRÁS =================
+    function iniciarCuentaAtras() {
+      const countdowns = document.querySelectorAll('.countdown');
+
+      countdowns.forEach(cd => {
+        const targetDateAttr = cd.getAttribute('data-date');
+        if (!targetDateAttr) return; // Evita errores si falta data-date
+        const targetDate = new Date(targetDateAttr).getTime();
+
+        if (isNaN(targetDate)) {
+          cd.innerHTML = "<span class='finalizado'>❌ Fecha inválida</span>";
           return;
         }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const interval = setInterval(() => {
+          const now = new Date().getTime();
+          const distance = targetDate - now;
 
-        cd.innerHTML = `
-          <div class="time-box"><span>${days}</span><small>Días</small></div>
-          <div class="time-box"><span>${hours}</span><small>Horas</small></div>
-          <div class="time-box"><span>${minutes}</span><small>Min</small></div>
-          <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
-        `;
-      }, 1000);
-    });
+          if (distance <= 0) {
+            clearInterval(interval);
+            cd.innerHTML = "<span class='finalizado'>🎊 ¡El evento ha comenzado!</span>";
+            return;
+          }
+
+          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+          cd.innerHTML = `
+            <div class="time-box"><span>${days}</span><small>Días</small></div>
+            <div class="time-box"><span>${hours}</span><small>Horas</small></div>
+            <div class="time-box"><span>${minutes}</span><small>Min</small></div>
+            <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
+          `;
+        }, 1000);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', iniciarCuentaAtras);
+  </script>
+
+  <!-- ================= ESTILOS DE CUENTA ATRÁS ================= -->
+  <style>
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
   }
 
-  iniciarCuentaAtras();
-</script>
+  .time-box {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 75px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s;
+  }
 
-<style>
-/* ======== ESTILO CUENTA ATRÁS ======== */
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 15px;
-  flex-wrap: wrap;
-}
+  .time-box:hover {
+    transform: scale(1.05);
+  }
 
-.time-box {
-  background: #1a1a1a;
-  color: #fff;
-  border-radius: 12px;
-  padding: 12px 18px;
-  text-align: center;
-  min-width: 75px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
+  .time-box span {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff8200;
+  }
 
-.time-box:hover {
-  transform: scale(1.05);
-}
+  .time-box small {
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
 
-.time-box span {
-  display: block;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ff8200;
-}
+  .finalizado {
+    font-weight: bold;
+    color: #00ff8c;
+    background: rgba(0,255,140,0.1);
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
 
-.time-box small {
-  font-size: 0.85rem;
-  opacity: 0.8;
-}
+  .evento-card {
+    background: #111;
+    color: white;
+    border-radius: 12px;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 700px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(255,130,0,0.3);
+    transition: transform 0.3s ease;
+  }
 
-.finalizado {
-  font-weight: bold;
-  color: #00ff8c;
-  background: rgba(0,255,140,0.1);
-  padding: 10px 20px;
-  border-radius: 10px;
-}
-</style>
+  .evento-card:hover {
+    transform: scale(1.02);
+  }
+
+  .evento-card.activo .evento-detalles {
+    display: block;
+  }
+
+  .evento-detalles {
+    display: none;
+    margin-top: 15px;
+  }
+
+  .titulo-principal {
+    text-align: center;
+    color: #ff8200;
+    margin-top: 30px;
+  }
+  </style>
+
+</body>
+</html>
