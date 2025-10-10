@@ -6,72 +6,80 @@
   <title>Fotos de Rol — Spanish City RP</title>
   <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
   <link rel="stylesheet" href="style.css">
+
   <style>
-    /* ====== GALERÍA ====== */
     .galeria-fotos {
-      padding: 40px;
-      background: #0b0b0b;
+      padding: 50px 10%;
+      background: #111;
       color: white;
-    }
-
-    .galeria-fotos h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #ff8200;
     }
 
-    .fotos-grid {
+    .galeria-fotos h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .galeria-fotos p {
+      color: #bbb;
+      margin-bottom: 40px;
+    }
+
+    .galeria-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
-      justify-items: center;
     }
 
     .foto-card {
       background: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(255, 130, 0, 0.3);
+      border-radius: 15px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .foto-card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 20px rgba(255, 130, 0, 0.5);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     .foto-card img {
       width: 100%;
-      height: 250px;
+      height: 200px;
       object-fit: cover;
+      cursor: pointer;
     }
 
-    .foto-card p {
-      text-align: center;
-      padding: 10px;
-      font-weight: bold;
-      color: #fff;
+    .foto-card h3 {
+      margin: 10px 0;
+      color: #ff8200;
     }
 
-    .hero {
-      background: linear-gradient(90deg, #ff8200, #ffb347);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px;
+    /* Modal para ampliar fotos */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
     }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+    .modal img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
     }
 
-    footer {
-      background: #000;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+    .modal.active {
+      display: flex;
     }
+
   </style>
 </head>
 <body>
@@ -97,58 +105,77 @@
 
   <!-- ================= CONTENIDO ================= -->
   <main>
-    <section class="hero">
-      <h1>📸 Galería de Fotos de Rol</h1>
-      <p>Momentos destacados del roleplay en <strong>Spanish City RP</strong>.</p>
-    </section>
-
     <section class="galeria-fotos">
-      <h2>📷 Fotos Recientes</h2>
-      <div class="fotos-grid">
+      <h1>📸 Galería de Fotos de Rol</h1>
+      <p>Fotos oficiales de roleos, accidentes y operaciones dentro de <strong>Spanish City RP</strong>.</p>
 
-        <!-- ACCIDENTE - TRES TOMAS -->
+      <div class="galeria-grid">
         <div class="foto-card">
-          <img src="img/Accidente.webp" alt="Accidente 1">
-          <p>Accidente múltiple — Toma 1</p>
+          <img src="Accidente.png" alt="Accidente 1">
+          <h3>Accidente — Toma 1</h3>
         </div>
         <div class="foto-card">
-          <img src="img/Accidente 2 foto.webp" alt="Accidente 2">
-          <p>Accidente múltiple — Toma 2</p>
+          <img src="Accidente 2 foto.png" alt="Accidente 2">
+          <h3>Accidente — Toma 2</h3>
         </div>
         <div class="foto-card">
-          <img src="img/Accidente 3 foto.webp" alt="Accidente 3">
-          <p>Accidente múltiple — Toma 3</p>
-        </div>
-
-        <!-- OTROS ESCENARIOS -->
-        <div class="foto-card">
-          <img src="img/Bomebros Estacion.webp" alt="Bomberos Estación">
-          <p>Bomberos listos en la estación</p>
+          <img src="Accidente 3 foto.png" alt="Accidente 3">
+          <h3>Accidente — Toma 3</h3>
         </div>
         <div class="foto-card">
-          <img src="img/Parada .webp" alt="Parada Guardia Civil">
-          <p>Parada de control — Guardia Civil</p>
+          <img src="Bomebros Estacion.png" alt="Bomberos en estación">
+          <h3>Bomberos en estación</h3>
         </div>
         <div class="foto-card">
-          <img src="img/CNP base.png" alt="Base CNP">
-          <p>Base del Cuerpo Nacional de Policía</p>
+          <img src="Parada .png" alt="Parada de GC">
+          <h3>Parada de Guardia Civil</h3>
         </div>
         <div class="foto-card">
-          <img src="img/CNP en base.webp" alt="CNP Base Interior">
-          <p>Policías en formación — Base CNP</p>
+          <img src="CNP base.png" alt="Base del CNP">
+          <h3>Base del CNP</h3>
         </div>
         <div class="foto-card">
-          <img src="img/CNP UIP.webp" alt="CNP UIP">
-          <p>Unidad de Intervención Policial (UIP)</p>
+          <img src="CNP UIP.png" alt="CNP UIP en acción">
+          <h3>CNP UIP en acción</h3>
         </div>
         <div class="foto-card">
-          <img src="img/GC.webp" alt="Guardia Civil">
-          <p>Patrulla de la Guardia Civil</p>
+          <img src="CNP en base.png" alt="CNP en base">
+          <h3>CNP en base</h3>
         </div>
-
+        <div class="foto-card">
+          <img src="GC.png" alt="Guardia Civil">
+          <h3>Guardia Civil patrullando</h3>
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- Modal para ampliar imágenes -->
+  <div class="modal" id="modal">
+    <img id="modalImg" src="">
+  </div>
+
+  <script>
+    // Modal de imagen
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const fotos = document.querySelectorAll('.foto-card img');
+
+    fotos.forEach(foto => {
+      foto.addEventListener('click', () => {
+        modalImg.src = foto.src;
+        modal.classList.add('active');
+      });
+    });
+
+    modal.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') modal.classList.remove('active');
+    });
+  </script>
 
   <!-- ================= FOOTER ================= -->
   <footer>
