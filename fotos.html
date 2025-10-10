@@ -6,6 +6,73 @@
   <title>Fotos de Rol — Spanish City RP</title>
   <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* ====== GALERÍA ====== */
+    .galeria-fotos {
+      padding: 40px;
+      background: #0b0b0b;
+      color: white;
+    }
+
+    .galeria-fotos h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ff8200;
+    }
+
+    .fotos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .foto-card {
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 130, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .foto-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(255, 130, 0, 0.5);
+    }
+
+    .foto-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .foto-card p {
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .hero {
+      background: linear-gradient(90deg, #ff8200, #ffb347);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
 
@@ -17,13 +84,13 @@
     </a>
     <nav>
       <a href="index.html" class="activo">Inicio</a>
-    <a href="sobre.html">Sobre Nosotros</a>
-    <a href="facciones-legales.html">Facciones Legales</a>
-    <a href="facciones-ilegales.html">Facciones Ilegales</a>
-    <a href="eventos.html">Eventos</a>
-    <a href="guias.html">Guias</a>
-    <a href="fotos.html">Fotos Rol</a>
-    <a href="spoilers.html">Spoilers</a>
+      <a href="sobre.html">Sobre Nosotros</a>
+      <a href="facciones-legales.html">Facciones Legales</a>
+      <a href="facciones-ilegales.html">Facciones Ilegales</a>
+      <a href="eventos.html">Eventos</a>
+      <a href="guias.html">Guias</a>
+      <a href="fotos.html">Fotos Rol</a>
+      <a href="spoilers.html">Spoilers</a>
       <a href="https://discord.gg/UTQS4Q9Wpn" target="_blank" class="discord-btn">Discord</a>
     </nav>
   </header>
@@ -32,14 +99,47 @@
   <main>
     <section class="hero">
       <h1>📸 Galería de Fotos de Rol</h1>
-      <p>Aquí podrás ver todas las fotos de rol subidas por el staff y la comunidad de <strong>Spanish City RP</strong>.</p>
+      <p>Disfruta de las mejores imágenes captadas durante los roles en <strong>Spanish City RP</strong>.</p>
     </section>
 
     <section class="galeria-fotos">
-      <div class="cards-grid">
-        <div class="card">
-          <h3>¡Aún no tenemos fotos!</h3>
-          <p>La galería se activará cuando se abra el servidor y comiencen los eventos de rol.</p>
+      <h2>📷 Fotos Recientes</h2>
+      <div class="fotos-grid">
+        <div class="foto-card">
+          <img src="img/Accidente 3 foto.webp" alt="Accidente 3">
+          <p>Accidente</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/Accidente 2 foto.webp" alt="Accidente 2">
+          <p>Colisión entre dos vehículos</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/Bomebros Estacion.webp" alt="Bomberos Estación">
+          <p>Bomberos listos en la estación</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/Parada .webp" alt="Parada GC">
+          <p>Parada de la Guardia Civil</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/CNP base.png" alt="Base CNP">
+          <p>Base del Cuerpo Nacional de Policía</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/GC.webp" alt="GC">
+          <p>Patrulla de Guardia Civil</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/CNP UIP.webp" alt="CNP UIP">
+          <p>Unidad de Intervención Policial</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/Accidente.webp" alt="Accidente">
+          <p>Accidente grave en ciudad</p>
+        </div>
+        <div class="foto-card">
+          <img src="img/CNP en base.webp" alt="CNP Base 2">
+          <p>Policías en formación</p>
         </div>
       </div>
     </section>
