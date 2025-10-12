@@ -60,53 +60,58 @@
 </footer>
 
   <!-- ================= SCRIPTS ================= -->
-  <script>
-    // Desplegar detalles al hacer clic
-    function toggleDetalles(element) {
-      element.classList.toggle('activo');
-    }
+<script>
+  // Desplegar detalles al hacer clic
+  function toggleDetalles(element) {
+    element.classList.toggle('activo');
+  }
 
-    // ================= CUENTA ATRÁS =================
-    function iniciarCuentaAtras() {
-      const countdowns = document.querySelectorAll('.countdown');
+  // ================= CUENTA ATRÁS =================
+  function iniciarCuentaAtras() {
+    const countdowns = document.querySelectorAll('.countdown');
 
-      countdowns.forEach(cd => {
-        const targetDateAttr = cd.getAttribute('data-date');
-        if (!targetDateAttr) return; // Evita errores si falta data-date
-        const targetDate = new Date(targetDateAttr).getTime();
+    countdowns.forEach(cd => {
+      const targetDateAttr = cd.getAttribute('data-date');
+      if (!targetDateAttr) return;
+      const targetDate = new Date(targetDateAttr).getTime();
 
-        if (isNaN(targetDate)) {
-          cd.innerHTML = "<span class='finalizado'>❌ Fecha inválida</span>";
+      if (isNaN(targetDate)) {
+        cd.innerHTML = "<span class='finalizado'>❌ Fecha inválida</span>";
+        return;
+      }
+
+      const interval = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= -3600000) { // más de 1 hora después
+          clearInterval(interval);
+          cd.innerHTML = "<span class='finalizado'>✅ El evento ha finalizado</span>";
+          return;
+        } else if (distance <= 0) {
+          clearInterval(interval);
+          cd.innerHTML = "<span class='finalizado'>🎉 ¡El evento está en curso!</span>";
           return;
         }
 
-        const interval = setInterval(() => {
-          const now = new Date().getTime();
-          const distance = targetDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-          if (distance <= 0) {
-            clearInterval(interval);
-            cd.innerHTML = "<span class='finalizado'>🎊 ¡El evento ha comenzado!</span>";
-            return;
-          }
+        cd.innerHTML = `
+          <div class="time-box"><span>${days}</span><small>Días</small></div>
+          <div class="time-box"><span>${hours}</span><small>Horas</small></div>
+          <div class="time-box"><span>${minutes}</span><small>Min</small></div>
+          <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
+        `;
+      }, 1000);
+    });
+  }
 
-          const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.addEventListener('DOMContentLoaded', iniciarCuentaAtras);
+</script>
 
-          cd.innerHTML = `
-            <div class="time-box"><span>${days}</span><small>Días</small></div>
-            <div class="time-box"><span>${hours}</span><small>Horas</small></div>
-            <div class="time-box"><span>${minutes}</span><small>Min</small></div>
-            <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
-          `;
-        }, 1000);
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', iniciarCuentaAtras);
-  </script>
 
   <!-- ================= ESTILOS DE CUENTA ATRÁS ================= -->
   <style>
