@@ -6,6 +6,80 @@
   <title>Spoilers / Novedades — Spanish City RP</title>
   <link rel="icon" type="image/png" href="Spanish-City-Logo.png">
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body {
+      background: #0d0d0d;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .spoilers-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 50px 10%;
+    }
+
+    .spoiler-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      background: #1a1a1a;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .spoiler-card:hover {
+      transform: scale(1.05);
+    }
+
+    .spoiler-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .overlay p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ff8200;
+      font-weight: bold;
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #ff8200;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 10%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      background: #111;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #ff8200;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,120 +113,49 @@
     <section>
       <h2>📸 Spoilers Recientes</h2>
       <div class="spoilers-grid-2">
-        <!-- Vehículos -->
-        <div class="spoiler-card">
-          <img src="Ambulancia Bombers Valencia.png" alt="Ambulancia Bombers Valencia">
-          <div class="overlay"><p>🚑 Ambulancia Bombers Valencia</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2008 GC USECIC.png" alt="Coche 2008 GC USECIC">
-          <div class="overlay"><p>🚔 Coche 2008 GC USECIC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2008 GC.webp" alt="Coche 2008 GC">
-          <div class="overlay"><p>🚔 Coche 2008 GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2019 CNP.png" alt="Coche 2019 CNP">
-          <div class="overlay"><p>👮 Coche 2019 CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 CNP.png" alt="Coche 2021 CNP">
-          <div class="overlay"><p>👮 Coche 2021 CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 GC USECIC.png" alt="Coche 2021 GC USECIC">
-          <div class="overlay"><p>🚔 Coche 2021 GC USECIC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche 2021 GC.png" alt="Coche 2021 GC">
-          <div class="overlay"><p>🚔 Coche 2021 GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche Bombers Valencia.png" alt="Coche Bombers Valencia">
-          <div class="overlay"><p>🚒 Coche Bombers Valencia</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche CSV.png" alt="Coche CSV">
-          <div class="overlay"><p>🚛 Coche CSV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC Seprona 2008.webp" alt="Coche GC Seprona 2008">
-          <div class="overlay"><p>🚓 Coche GC Seprona 2008</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC V2.png" alt="Coche GC V2">
-          <div class="overlay"><p>🚓 Coche GC V2</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC V21.png" alt="Coche GC V21">
-          <div class="overlay"><p>🚓 Coche GC V21</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche GC.png" alt="Coche GC">
-          <div class="overlay"><p>🚓 Coche GC</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Coche PLV.png" alt="Coche PLV">
-          <div class="overlay"><p>🚔 Coche PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta CNP UIP.png" alt="Furgoneta CNP UIP">
-          <div class="overlay"><p>👮 Furgoneta CNP UIP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta PLV Atestados Informes.png" alt="Furgoneta PLV Atestados Informes">
-          <div class="overlay"><p>🚔 Furgoneta PLV Atestados</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgoneta PLV.png" alt="Furgoneta PLV">
-          <div class="overlay"><p>🚔 Furgoneta PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón CNP SUBSUELO.png" alt="Furgón CNP SUBSUELO">
-          <div class="overlay"><p>👮 Furgón CNP SUBSUELO</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón CNP UNIDAD DE DOCUMENTACIÓN.png" alt="Furgón CNP UNIDAD DE DOCUMENTACIÓN">
-          <div class="overlay"><p>👮 Furgón CNP DOCUMENTACIÓN</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Furgón PLV.png" alt="Furgón PLV">
-          <div class="overlay"><p>🚔 Furgón PLV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Grúa CSV.png" alt="Grúa CSV">
-          <div class="overlay"><p>🚛 Grúa CSV</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Quad CNP.png" alt="Quad CNP">
-          <div class="overlay"><p>👮 Quad CNP</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Vehículo Limpieza CSV.png" alt="Vehículo Limpieza CSV">
-          <div class="overlay"><p>🧹 Vehículo Limpieza CSV</p></div>
-        </div>
-
-        <!-- ================= NUEVOS SPOILERS SAMU ================= -->
-        <div class="spoiler-card">
-          <img src="Traje Transport Sanitari Con Guantes Delante.webp" alt="Traje SAMU Delante Guantes">
-          <div class="overlay"><p>🚑 Traje SAMU (Delante con guantes)</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Traje Transport Sanitari Con Guantes Detras.png" alt="Traje SAMU Detrás Guantes">
-          <div class="overlay"><p>🚑 Traje SAMU (Detrás con guantes)</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Traje Transport Sanitari Delante.webp" alt="Traje SAMU Delante">
-          <div class="overlay"><p>🚑 Traje SAMU (Delante sin guantes)</p></div>
-        </div>
-        <div class="spoiler-card">
-          <img src="Traje Transport Sanitari Detras.webp" alt="Traje SAMU Detrás">
-          <div class="overlay"><p>🚑 Traje SAMU (Detrás sin guantes)</p></div>
-        </div>
         <div class="spoiler-card">
           <img src="Ambulancia SAMU.webp" alt="Ambulancia SAMU">
-          <div class="overlay"><p>🚨 Ambulancia SAMU</p></div>
+          <div class="overlay"><p>🚑 Ambulancia SAMU</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje Transport Sanitari Con Guantes Detras.png" alt="Traje Transport Sanitari Con Guantes Detrás">
+          <div class="overlay"><p>🧑‍⚕️ Traje Transport Sanitari (Guantes Detrás)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje Transport Sanitari Con Guantes Delante.webp" alt="Traje Transport Sanitari Con Guantes Delante">
+          <div class="overlay"><p>🧑‍⚕️ Traje Transport Sanitari (Guantes Delante)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje Transport Sanitari Detras.webp" alt="Traje Transport Sanitari Detrás">
+          <div class="overlay"><p>🧑‍⚕️ Traje Transport Sanitari (Detrás)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje Transport Sanitari Delante.webp" alt="Traje Transport Sanitari Delante">
+          <div class="overlay"><p>🧑‍⚕️ Traje Transport Sanitari (Delante)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje GC Normal Delante.webp" alt="Traje Guardia Civil Delante">
+          <div class="overlay"><p>👮 Traje Guardia Civil (Delante)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje GC Normal.webp" alt="Traje Guardia Civil Detrás">
+          <div class="overlay"><p>👮 Traje Guardia Civil (Detrás)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje USECIC Detras .webp" alt="Traje USECIC Detrás">
+          <div class="overlay"><p>🚔 Traje USECIC (Detrás)</p></div>
+        </div>
+
+        <div class="spoiler-card">
+          <img src="Traje USECIC Delante.webp" alt="Traje USECIC Delante">
+          <div class="overlay"><p>🚔 Traje USECIC (Delante)</p></div>
         </div>
       </div>
     </section>
