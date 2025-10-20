@@ -438,3 +438,13 @@ footer a:hover {
     gap: 15px;
   }
 }
+.card-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 15px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  filter: drop-shadow(0 0 5px rgba(255, 130, 0, 0.4));
+}
