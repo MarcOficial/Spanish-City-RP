@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eventos | Distrito Centro RP</title>
-  <link rel="icon" type="image/png" href="Distrito Centro RP .webp">
+  <link rel="icon" type="image/png" href="Distrito Centro RP.webp">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,15 +12,15 @@
   <!-- ================= HEADER ================= -->
   <header>
     <a href="index.html" class="logo">
-      <img src="Distrito Centro RP .webp" alt="Logo">
+      <img src="Distrito Centro RP.webp" alt="Logo">
       <span>Distrito Centro RP</span>
     </a>
     <nav>
       <a href="index.html">Inicio</a>
       <a href="sobre.html">Sobre Nosotros</a>
       <a href="facciones-legales.html">Facciones Legales</a>
-      <a href="facciones-ilegales.html" class="activo">Facciones Ilegales</a>
-      <a href="eventos.html">Eventos</a>
+      <a href="facciones-ilegales.html">Facciones Ilegales</a>
+      <a href="eventos.html" class="activo">Eventos</a>
       <a href="guias.html">Guías</a>
       <a href="fotos.html">Fotos Rol</a>
       <a href="spoilers.html">Spoilers</a>
@@ -32,162 +32,81 @@
   <main class="eventos-main">
     <h1 class="titulo-principal">📅 Próximos Eventos</h1>
 
-    <!-- ======== Evento 1 ======== -->
-    <div class="evento-card" onclick="toggleDetalles(this)">
+    <!-- MENSAJE DE AVISO -->
+    <div class="evento-card">
       <div class="evento-header">
-        <h2>🚀 Gran Apertura de Spanish City RP</h2>
-        <!-- ✅ Fecha corregida: 11 de octubre de 2025, 18:15 -->
-        <div class="countdown" data-date="2025-10-11T18:15:00+02:00"></div>
+        <h2>🚧 Aún no hay eventos disponibles</h2>
       </div>
-      <div class="evento-detalles">
-        <h3>Detalles del Evento:</h3>
-        <ul>
-          <li>📍 Ubicación: Servidor privado de  Emergency Response: Liberty County</li>
-          <li>🕕 Fecha: 11 de Octubre de 2025, 18:15h (hora España)</li>
-          <li>🎉 Actividades: Presentación, convoy policial, sorteos y sorpresas</li>
-          <li>👮 Participan todas las corporaciones</li>
-          <li>🪩 ¡Ven con tus amigos y disfruta del mejor roleplay!</li>
-        </ul>
+      <div class="evento-detalles" style="display:block;">
+        <p style="color:#ccc; font-size:1.1rem;">
+          El servidor <strong>Distrito Centro RP</strong> aún no ha sido inaugurado oficialmente.<br>
+          Una vez abramos, aquí se anunciarán todos los eventos especiales, operativos y actividades de rol.
+        </p>
       </div>
     </div>
   </main>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  © 2025 <strong>Spanish City RP</strong> — Todos los derechos reservados.  
-  <br>
-  Desarrollado por <a href="https://nexus-bots-creations.netlify.app/" target="_blank"><strong>Nexus Bots Creations</strong></a>.
-</footer>
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    © 2025 <strong>Distrito Centro RP</strong> — Todos los derechos reservados.  
+    <br>
+    Desarrollado por <a href="https://nexus-bots-creations.netlify.app/" target="_blank"><strong>Nexus Bots Creations</strong></a>.
+  </footer>
 
-  <!-- ================= SCRIPTS ================= -->
-<script>
-  // Desplegar detalles al hacer clic
-  function toggleDetalles(element) {
-    element.classList.toggle('activo');
-  }
-
-  // ================= CUENTA ATRÁS =================
-  function iniciarCuentaAtras() {
-    const countdowns = document.querySelectorAll('.countdown');
-
-    countdowns.forEach(cd => {
-      const targetDateAttr = cd.getAttribute('data-date');
-      if (!targetDateAttr) return;
-      const targetDate = new Date(targetDateAttr).getTime();
-
-      if (isNaN(targetDate)) {
-        cd.innerHTML = "<span class='finalizado'>❌ Fecha inválida</span>";
-        return;
-      }
-
-      const interval = setInterval(() => {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
-
-        if (distance <= -3600000) { // más de 1 hora después
-          clearInterval(interval);
-          cd.innerHTML = "<span class='finalizado'>✅ El evento ha finalizado</span>";
-          return;
-        } else if (distance <= 0) {
-          clearInterval(interval);
-          cd.innerHTML = "<span class='finalizado'>🎉 ¡El evento está en curso!</span>";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        cd.innerHTML = `
-          <div class="time-box"><span>${days}</span><small>Días</small></div>
-          <div class="time-box"><span>${hours}</span><small>Horas</small></div>
-          <div class="time-box"><span>${minutes}</span><small>Min</small></div>
-          <div class="time-box"><span>${seconds}</span><small>Seg</small></div>
-        `;
-      }, 1000);
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', iniciarCuentaAtras);
-</script>
-
-
-  <!-- ================= ESTILOS DE CUENTA ATRÁS ================= -->
+  <!-- ================= ESTILOS ================= -->
   <style>
-  .countdown {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 15px;
-    flex-wrap: wrap;
-  }
+    .eventos-main {
+      padding: 50px 10%;
+      background: #111;
+      color: white;
+    }
 
-  .time-box {
-    background: #1a1a1a;
-    color: #fff;
-    border-radius: 12px;
-    padding: 12px 18px;
-    text-align: center;
-    min-width: 75px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    transition: transform 0.3s;
-  }
+    .titulo-principal {
+      text-align: center;
+      color: #ff8200;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+    }
 
-  .time-box:hover {
-    transform: scale(1.05);
-  }
+    .evento-card {
+      background: #1a1a1a;
+      color: white;
+      border-radius: 12px;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+      box-shadow: 0 0 15px rgba(255,130,0,0.3);
+    }
 
-  .time-box span {
-    display: block;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #ff8200;
-  }
+    .evento-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: #ff8200;
+      text-align: center;
+    }
 
-  .time-box small {
-    font-size: 0.85rem;
-    opacity: 0.8;
-  }
+    .evento-detalles {
+      margin-top: 15px;
+      text-align: center;
+    }
 
-  .finalizado {
-    font-weight: bold;
-    color: #00ff8c;
-    background: rgba(0,255,140,0.1);
-    padding: 10px 20px;
-    border-radius: 10px;
-  }
+    .evento-detalles p {
+      margin: 0;
+    }
 
-  .evento-card {
-    background: #111;
-    color: white;
-    border-radius: 12px;
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 700px;
-    cursor: pointer;
-    box-shadow: 0 0 15px rgba(255,130,0,0.3);
-    transition: transform 0.3s ease;
-  }
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      background: #111;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
 
-  .evento-card:hover {
-    transform: scale(1.02);
-  }
-
-  .evento-card.activo .evento-detalles {
-    display: block;
-  }
-
-  .evento-detalles {
-    display: none;
-    margin-top: 15px;
-  }
-
-  .titulo-principal {
-    text-align: center;
-    color: #ff8200;
-    margin-top: 30px;
-  }
+    footer a {
+      color: #ff8200;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 
 </body>
